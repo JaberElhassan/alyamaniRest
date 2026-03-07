@@ -5,9 +5,11 @@
   "description": "Fast food restaurant website using Node.js, Express, Handlebars, and MySQL",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "build": "echo \"No build step required for this Node.js/Express app\"",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
