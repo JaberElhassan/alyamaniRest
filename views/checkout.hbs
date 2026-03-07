@@ -1,0 +1,29 @@
+<section class="checkout-page-wrap">
+  <h1>Checkout</h1>
+  <p class="checkout-intro">Review your order and place it now.</p>
+
+  <div class="checkout-shell">
+    <div class="checkout-items">
+      <h2>Items</h2>
+      <ul class="checkout-item-list">
+        {{#each items}}
+          <li class="checkout-item-row">
+            <span>{{name}} ({{size}}) x {{quantity}}</span>
+            <strong>{{calcSubtotal unit_price quantity}}</strong>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <aside class="checkout-summary">
+      <h2>Payment Summary</h2>
+      <p><span>Subtotal</span><strong>{{formatCurrency subtotal}}</strong></p>
+      <p><span>Tax</span><strong>{{formatCurrency tax}}</strong></p>
+      <p class="summary-total"><span>Total</span><strong>{{formatCurrency total}}</strong></p>
+
+      <form method="POST" action="/cart/checkout" class="checkout-form">
+        <button class="btn" type="submit">Place Order</button>
+      </form>
+    </aside>
+  </div>
+</section>

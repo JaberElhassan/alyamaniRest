@@ -1,0 +1,20 @@
+﻿<article class="detail-card">
+  <img src="{{item.image_url}}" alt="{{item.name}}" class="detail-image" />
+  <div>
+    <h1>{{item.name}}</h1>
+    <p><strong>Category:</strong> {{item.category_name}}</p>
+    <p><strong>Ingredients:</strong> {{item.ingredients}}</p>
+
+    <form method="POST" action="/cart/add/{{item.id}}" class="size-form">
+      <label>
+        <input type="radio" name="size" value="small" checked />
+        Small ({{formatCurrency item.price_small}})
+      </label>
+      <label>
+        <input type="radio" name="size" value="large" />
+        Large ({{formatCurrency item.price_large}})
+      </label>
+      <button class="btn" type="submit">Add to Cart</button>
+    </form>
+  </div>
+</article>

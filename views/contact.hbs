@@ -1,0 +1,48 @@
+<section class="contact-page-wrap">
+  <header class="contact-banner">
+    <p class="contact-kicker">Get In Touch</p>
+    <h1 class="menu-title">Contact AL YAMANI RESTAURANT</h1>
+    <p>Questions, reservations, or catering requests. Send us a message and our team will reply quickly.</p>
+  </header>
+
+  {{#if submitted}}
+    <p class="contact-success">Thank you. Your message has been sent successfully.</p>
+  {{/if}}
+  {{#if errorMessage}}
+    <p class="contact-error">{{errorMessage}}</p>
+  {{/if}}
+
+  <div class="contact-layout">
+    <section class="contact-form-card">
+      <h2>Send Us a Message</h2>
+      <form method="POST" action="/contact" class="contact-form">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" type="text" required>
+
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" type="tel">
+
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" type="text" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <aside class="contact-info-card">
+      <h2>Visit Or Call</h2>
+      <p><strong>Phone 1:</strong> <a href="tel:+96103316680">+961 03 316-680</a></p>
+      <p><strong>Phone 2:</strong> <a href="tel:+96170888403">+961 70 888-403</a></p>
+      <p><strong>Email:</strong> <a href="mailto:sam_1072@yahoo.com">alyamanirestaurant@yahoo.com</a></p>
+      <p><strong>Address:</strong> وادي الزينة - طريق عام سبلين</p>
+      <p><strong>Hours:</strong> Mon-Sun, 10:00 AM - 1:00 AM</p>
+    </aside>
+  </div>
+  
+</section>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{title}} | AL YAMANI RESTAURANT</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="{{bodyClass}}">
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="AL YAMANI RESTAURANT home">
+      <img src="/images/logo.svg" alt="AL YAMANI RESTAURANT logo" class="brand-logo" />
+      <span class="brand-text">AL YAMANI RESTAURANT</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navbar">
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+    </button>
+    <a href="/cart" class="cart-mobile-icon" aria-label="Open cart" title="Cart">
+      <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M3 4h2l2.2 9.2a1 1 0 0 0 1 .8H18a1 1 0 0 0 1-.8L21 7H7.2"></path>
+        <circle cx="10" cy="19" r="1.6"></circle>
+        <circle cx="17" cy="19" r="1.6"></circle>
+      </svg>
+      <span class="cart-count-badge">{{cartItemCount}}</span>
+    </a>
+    <nav class="navbar" id="primary-navbar">
+      <a href="/">Home</a>
+      <a href="/contact">Contact</a>
+      <a href="/menu">Menu</a>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/others">Others</a>
+      <a href="/cart" class="cart-nav-link" aria-label="Cart" title="Cart">
+        <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M3 4h2l2.2 9.2a1 1 0 0 0 1 .8H18a1 1 0 0 0 1-.8L21 7H7.2"></path>
+          <circle cx="10" cy="19" r="1.6"></circle>
+          <circle cx="17" cy="19" r="1.6"></circle>
+        </svg>
+        <span class="cart-count-badge">{{cartItemCount}}</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="container">
+    {{{body}}}
+  </main>
+  <button id="topBtn" class="top-btn" type="button" aria-label="Scroll to top">Top</button>
+  <script>
+    (() => {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.navbar');
+      const topBtn = document.getElementById('topBtn');
+
+      const closeMenu = () => {
+        if (!toggle || !nav) return;
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('is-open');
+      };
+
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const isOpen = nav.classList.toggle('is-open');
+          toggle.classList.toggle('is-open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        nav.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            if (window.matchMedia('(max-width: 1024px)').matches) {
+              closeMenu();
+            }
+          });
+        });
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 1024) {
+            closeMenu();
+          }
+        });
+
+        document.addEventListener('click', (event) => {
+          if (!window.matchMedia('(max-width: 1024px)').matches) {
+            return;
+          }
+
+          const clickedInsideMenu = nav.contains(event.target);
+          const clickedToggle = toggle.contains(event.target);
+          if (!clickedInsideMenu && !clickedToggle) {
+            closeMenu();
+          }
+        });
+      }
+
+      if (topBtn) {
+        const toggleTopBtn = () => {
+          const shouldShow = window.scrollY > 240;
+          topBtn.classList.toggle('is-visible', shouldShow);
+        };
+
+        window.addEventListener('scroll', toggleTopBtn, { passive: true });
+        toggleTopBtn();
+
+        topBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
+
