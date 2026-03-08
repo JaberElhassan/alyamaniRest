@@ -41,3 +41,11 @@
     <button class="btn admin-clear-btn" type="submit">Delete All Transactions</button>
   </form>
 </section>
+
+<script>
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'adminOrdersUpdatedAt' && document.visibilityState === 'visible') {
+      window.location.reload();
+    }
+  });
+</script>
