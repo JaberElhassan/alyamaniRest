@@ -1,0 +1,43 @@
+<section class="admin-wrap">
+  <h1>Admin</h1>
+  <p class="admin-welcome">Welcome, <strong>{{username}}</strong>.</p>
+  <div class="admin-logout-form">
+    <a class="btn checkout-secondary-btn" href="/logout">Logout</a>
+  </div>
+
+  <h2>Transactions</h2>
+
+  {{#if orders.length}}
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Order Number</th>
+            <th>Date</th>
+            <th>Total Money</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each orders}}
+            <tr>
+              <td>{{this.orderNumber}}</td>
+              <td>{{this.date}}</td>
+              <td>{{formatCurrency this.total}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{else}}
+    <p>No transactions yet.</p>
+  {{/if}}
+
+  <form
+    class="admin-clear-form"
+    method="POST"
+    action="/admin/clear-transactions"
+    onsubmit="return confirm('Delete all transactions?');"
+  >
+    <button class="btn admin-clear-btn" type="submit">Delete All Transactions</button>
+  </form>
+</section>

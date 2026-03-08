@@ -2245,3 +2245,76 @@ body.others-page .navbar a {
     display: none;
   }
 }
+
+.auth-wrap,
+.admin-wrap {
+  max-width: 760px;
+  margin: 2rem auto;
+  padding: 1.4rem;
+  border-radius: 14px;
+  border: 1px solid #2b2f3a;
+  background: rgba(12, 14, 22, 0.86);
+}
+
+.auth-wrap h1,
+.admin-wrap h1 {
+  margin-top: 0;
+}
+
+.auth-form {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid #3b4253;
+  background: #141925;
+  color: #f5f7ff;
+}
+
+.auth-form .btn {
+  margin-top: 0.5rem;
+}
+
+.auth-error {
+  color: #ff7d7d;
+  font-weight: 700;
+}
+
+.admin-welcome {
+  margin: 0.5rem 0 1.2rem;
+}
+
+.admin-logout-form {
+  margin-bottom: 1.2rem;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  border-bottom: 1px solid #2f3646;
+  text-align: left;
+  padding: 0.7rem 0.65rem;
+}
+
+.admin-clear-form {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-clear-btn {
+  background: #9d2323;
+}

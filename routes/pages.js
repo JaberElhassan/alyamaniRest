@@ -1,9 +1,31 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-const { getMenuItems } = require('../data/store');
+const { getMenuItems, getAdminOrders, clearAdminOrders } = require('../data/store');
 
 const router = express.Router();
 const CONTACT_EMAIL_TO = 'sam_1072@yahoo.com';
+const ADMIN_USERNAME = 'alyamani';
+const ADMIN_PASSWORD = 'alyamani';
+const ADMIN_COOKIE = 'adminAuth';
+
+const parseCookies = (cookieHeader = '') =>
+  Object.fromEntries(
+    cookieHeader
+      .split(';')
+      .map((part) => part.trim())
+      .filter(Boolean)
+      .map((part) => {
+        const idx = part.indexOf('=');
+        if (idx < 0) {
+          return [part, ''];
+        }
+        const key = part.slice(0, idx).trim();
+        const value = decodeURIComponent(part.slice(idx + 1).trim());
+        return [key, value];
+      })
+  );
+
+const isAdminLoggedIn = (req) => parseCookies(req.headers.cookie || '')[ADMIN_COOKIE] === '1';
 
 const smtpPort = Number(process.env.SMTP_PORT || 587);
 const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465;
@@ -27,6 +49,61 @@ router.get('/', (req, res) => {
 router.get('/contact', (req, res) => {
   res.render('contact', { title: 'Contact', bodyClass: 'contact-page' });
 });
+
+router.get('/login', (req, res) => {
+  if (isAdminLoggedIn(req)) {
+    return res.redirect('/admin');
+  }
+
+  res.render('login', { title: 'Login', bodyClass: 'login-page' });
+});
+
+router.post('/login', (req, res) => {
+  const username = String(req.body.username || '').trim();
+  const password = String(req.body.password || '').trim();
+
+  if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
+    return res.status(401).render('login', {
+      title: 'Login',
+      bodyClass: 'login-page',
+      errorMessage: 'Invalid username or password.',
+      username
+    });
+  }
+
+  res.setHeader('Set-Cookie', `${ADMIN_COOKIE}=1; Path=/; HttpOnly; SameSite=Lax`);
+  return res.redirect('/admin');
+});
+
+router.get('/admin', (req, res) => {
+  if (!isAdminLoggedIn(req)) {
+    return res.redirect('/login');
+  }
+
+  return res.render('admin', {
+    title: 'Admin',
+    bodyClass: 'admin-page',
+    username: ADMIN_USERNAME,
+    orders: getAdminOrders()
+  });
+});
+
+router.post('/admin/clear-transactions', (req, res) => {
+  if (!isAdminLoggedIn(req)) {
+    return res.redirect('/login');
+  }
+
+  clearAdminOrders();
+  return res.redirect('/admin');
+});
+
+const logoutHandler = (req, res) => {
+  res.setHeader('Set-Cookie', `${ADMIN_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`);
+  return res.redirect('/login');
+};
+
+router.get('/logout', logoutHandler);
+router.post('/logout', logoutHandler);
 
 router.post('/contact', async (req, res) => {
   const {

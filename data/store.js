@@ -1,3 +1,8 @@
+const fs = require('fs');
+const path = require('path');
+
+const ADMIN_ORDERS_FILE = path.join(__dirname, 'admin-orders.json');
+
 const categories = [
   { id: 1, name: 'Salad' },
   { id: 2, name: 'Sandwiches' },
@@ -651,6 +656,30 @@ const menuItems = [
 
 const cartItems = [];
 let nextCartId = 1;
+const loadAdminOrders = () => {
+  try {
+    if (!fs.existsSync(ADMIN_ORDERS_FILE)) {
+      return [];
+    }
+
+    const raw = fs.readFileSync(ADMIN_ORDERS_FILE, 'utf8');
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    console.error('Failed to load admin orders from file:', error);
+    return [];
+  }
+};
+
+const persistAdminOrders = () => {
+  try {
+    fs.writeFileSync(ADMIN_ORDERS_FILE, JSON.stringify(adminOrders, null, 2), 'utf8');
+  } catch (error) {
+    console.error('Failed to persist admin orders to file:', error);
+  }
+};
+
+const adminOrders = loadAdminOrders();
 
 const DRINK_CATEGORIES = new Set(['Drink']);
 const DRINK_IMAGE_PATHS = [
@@ -766,6 +795,22 @@ const clearCart = () => {
   cartItems.length = 0;
 };
 
+const addAdminOrder = ({ orderNumber, date, total }) => {
+  adminOrders.unshift({
+    orderNumber: String(orderNumber),
+    date: String(date),
+    total: Number(total || 0)
+  });
+  persistAdminOrders();
+};
+
+const getAdminOrders = () => adminOrders.slice();
+
+const clearAdminOrders = () => {
+  adminOrders.length = 0;
+  persistAdminOrders();
+};
+
 module.exports = {
   categories,
   getMenuItems,
@@ -776,5 +821,8 @@ module.exports = {
   increaseCartItem,
   decreaseCartItem,
   deleteCartItem,
-  clearCart
+  clearCart,
+  addAdminOrder,
+  getAdminOrders,
+  clearAdminOrders
 };

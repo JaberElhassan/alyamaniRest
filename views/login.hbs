@@ -1,0 +1,32 @@
+<section class="auth-wrap">
+  <h1>Login Page</h1>
+  <p>Use your admin credentials to open the admin page.</p>
+  <p><strong>Username:</strong> alyamani | <strong>Password:</strong> alyamani</p>
+
+  {{#if errorMessage}}
+    <p class="auth-error">{{errorMessage}}</p>
+  {{/if}}
+
+  <form class="auth-form" method="POST" action="/login">
+    <label for="username">Username</label>
+    <input
+      id="username"
+      name="username"
+      type="text"
+      value="{{username}}"
+      placeholder="Enter username"
+      required
+    />
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      placeholder="Enter password"
+      required
+    />
+
+    <button type="submit" class="btn">Login</button>
+  </form>
+</section>

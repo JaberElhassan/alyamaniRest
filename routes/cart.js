@@ -5,7 +5,8 @@ const {
   increaseCartItem,
   decreaseCartItem,
   deleteCartItem,
-  clearCart
+  clearCart,
+  addAdminOrder
 } = require('../data/store');
 
 const router = express.Router();
@@ -69,6 +70,11 @@ router.post('/checkout', async (req, res, next) => {
     clearCart();
 
     const orderRef = `AY-${Date.now().toString().slice(-8)}`;
+    addAdminOrder({
+      orderNumber: orderRef,
+      date: new Date().toLocaleString(),
+      total
+    });
 
     res.render('checkout-success', {
       title: 'Order Placed',
