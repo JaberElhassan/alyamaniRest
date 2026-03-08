@@ -7,6 +7,16 @@ const CONTACT_EMAIL_TO = 'sam_1072@yahoo.com';
 const ADMIN_USERNAME = 'alyamani';
 const ADMIN_PASSWORD = 'alyamani';
 const ADMIN_COOKIE = 'adminAuth';
+const ADMIN_POLL_INTERVAL_MS = 5000;
+
+const getOrdersVersion = () => {
+  const orders = getAdminOrders();
+  const latest = orders[0];
+  return {
+    token: `${orders.length}:${latest?.orderNumber || ''}:${latest?.date || ''}`,
+    count: orders.length
+  };
+};
 
 const parseCookies = (cookieHeader = '') =>
   Object.fromEntries(
@@ -79,13 +89,24 @@ router.get('/admin', (req, res) => {
   if (!isAdminLoggedIn(req)) {
     return res.redirect('/login');
   }
+  const { token } = getOrdersVersion();
 
   return res.render('admin', {
     title: 'Admin',
     bodyClass: 'admin-page',
     username: ADMIN_USERNAME,
-    orders: getAdminOrders()
+    orders: getAdminOrders(),
+    ordersVersion: token,
+    adminPollIntervalMs: ADMIN_POLL_INTERVAL_MS
   });
+});
+
+router.get('/admin/orders-version', (req, res) => {
+  if (!isAdminLoggedIn(req)) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  return res.json(getOrdersVersion());
 });
 
 router.post('/admin/clear-transactions', (req, res) => {

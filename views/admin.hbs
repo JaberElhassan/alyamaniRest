@@ -43,9 +43,47 @@
 </section>
 
 <script>
+  let currentOrdersVersion = '{{ordersVersion}}';
+
   window.addEventListener('storage', (event) => {
     if (event.key === 'adminOrdersUpdatedAt' && document.visibilityState === 'visible') {
       window.location.reload();
     }
   });
+
+  const checkOrdersVersion = async () => {
+    if (document.visibilityState !== 'visible') {
+      return;
+    }
+
+    try {
+      const response = await fetch('/admin/orders-version', {
+        method: 'GET',
+        headers: { Accept: 'application/json' },
+        cache: 'no-store'
+      });
+
+      if (response.status === 401) {
+        window.location.href = '/login';
+        return;
+      }
+
+      if (!response.ok) {
+        return;
+      }
+
+      const data = await response.json();
+      const nextVersion = String(data.token || '');
+
+      if (nextVersion && nextVersion !== currentOrdersVersion) {
+        window.location.reload();
+      }
+    } catch (error) {
+      // Ignore transient network issues and retry on next interval.
+    }
+  };
+
+  setInterval(() => {
+    checkOrdersVersion();
+  }, {{adminPollIntervalMs}});
 </script>
