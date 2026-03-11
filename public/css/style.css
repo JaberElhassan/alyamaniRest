@@ -350,12 +350,14 @@ body {
 .slider-controls {
   display: inline-flex;
   gap: 0.45rem;
+
 }
 
 .slider-controls-bottom {
   margin-top: 0.85rem;
   width: 100%;
   justify-content: center;
+  
 }
 
 .slider-btn {
@@ -377,7 +379,7 @@ body {
 .slider-track-wrap {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(230px, 1fr);
+  grid-auto-columns: minmax(180px, 1fr);
   gap: 0.85rem;
   overflow-x: auto;
   scroll-behavior: auto;
@@ -393,11 +395,13 @@ body {
   border-radius: 11px;
   overflow: hidden;
   background: #fff9f1;
+  margin-bottom: 10px;
+  
 }
 
 .slide-card img {
   width: 100%;
-  height: 85%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -1812,16 +1816,22 @@ body.others-page .navbar a {
   }
 
   .home-gallery {
-    grid-template-columns: 1fr;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
   }
-
+  .home-gallery img {
+    max-width: 32%;
+    height: auto;
+    object-fit: cover;
+  }
   .home-footer-social {
     flex-direction: column;
     align-items: flex-start;
   }
 
   .slider-track-wrap {
-    grid-auto-columns: 78%;
+    grid-auto-columns: 35%;
   }
 
   .connect-grid {
