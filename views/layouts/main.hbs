@@ -96,6 +96,67 @@
         });
       }
 
+      const menuSections = document.querySelectorAll('.menu-section');
+      if (menuSections.length) {
+        const slugify = (value) =>
+          String(value || '')
+            .toLowerCase()
+            .trim()
+            .replace(/&/g, 'and')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+
+        menuSections.forEach((section) => {
+          const sectionToggle = section.querySelector('.menu-section-toggle');
+          const sectionGrid = section.querySelector('.card-grid');
+          const categoryName = section.dataset.category || sectionToggle?.innerText || '';
+
+          if (!section.id && categoryName) {
+            section.id = slugify(categoryName);
+          }
+
+          if (!sectionToggle || !sectionGrid) return;
+
+          sectionToggle.addEventListener('click', () => {
+            const isCollapsed = section.classList.toggle('is-collapsed');
+            sectionToggle.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+          });
+        });
+
+        document.querySelectorAll('.menu-category-links a').forEach((link) => {
+          link.addEventListener('click', (event) => {
+            const targetId = link.getAttribute('href');
+            if (!targetId || !targetId.startsWith('#')) return;
+            const targetSection = document.querySelector(targetId);
+            if (!targetSection) return;
+            event.preventDefault();
+
+            if (targetSection.classList.contains('is-collapsed')) {
+              targetSection.classList.remove('is-collapsed');
+              const targetToggle = targetSection.querySelector('.menu-section-toggle');
+              if (targetToggle) {
+                targetToggle.setAttribute('aria-expanded', 'true');
+              }
+            }
+
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            const extraTargets = link.dataset.open;
+            if (extraTargets) {
+              extraTargets.split(',').forEach((slug) => {
+                const extraSection = document.getElementById(slug.trim());
+                if (!extraSection || !extraSection.classList.contains('is-collapsed')) return;
+                extraSection.classList.remove('is-collapsed');
+                const extraToggle = extraSection.querySelector('.menu-section-toggle');
+                if (extraToggle) {
+                  extraToggle.setAttribute('aria-expanded', 'true');
+                }
+              });
+            }
+          });
+        });
+      }
+
       if (topBtn) {
         const toggleTopBtn = () => {
           const shouldShow = window.scrollY > 240;

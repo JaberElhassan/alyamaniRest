@@ -1,15 +1,39 @@
 <h1 class="menu-title">Our Menu</h1>
+<nav class="menu-category-links" aria-label="Menu categories">
+  <a href="#sides">Sides</a>
+  <a href="#sandwiches">Sandwiches</a>
+  <a href="#salad">Salads</a>
+  <a href="#juice-and-drink">Juice &amp; Drink</a>
+  <a href="#others">Others</a>
+</nav>
 {{#each categories}}
-  <section class="menu-section">
-    <h2>{{name}}</h2>
+  <section class="menu-section" data-category="{{name}}">
+    <h2>
+      <button class="menu-section-toggle" type="button" aria-expanded="true">
+        <span class="menu-section-title">{{name}}</span>
+        <span class="menu-section-arrow" aria-hidden="true"></span>
+      </button>
+    </h2>
     <div class="card-grid">
       {{#each items}}
-        <article class="card">
-          <img src="{{image_url}}" alt="{{name}}" />
-          <h3>{{name}}</h3>
-          <p>{{ingredients}}</p>
-          <p>Small: {{formatCurrency price_small}} | Large: {{formatCurrency price_large}}</p>
-          <a class="btn" href="/menu/item/{{id}}">View Details</a>
+        <article class="card menu-card">
+          <div class="menu-card-media">
+            <img src="{{image_url}}" alt="{{name}}" />
+          </div>
+          <div class="menu-card-content">
+            <div class="menu-card-body">
+              <p class="name">{{name}}</p>
+              <p>{{ingredients}}</p>
+              <p>Small: {{formatCurrency price_small}} | Large: {{formatCurrency price_large}}</p>
+            </div>
+            <div class="menu-card-buttons">
+              <a class="btn menu-view-details" href="/menu/item/{{id}}">View Details</a>
+              <form method="POST" action="/cart/add/{{id}}" class="inline-form">
+                <input type="hidden" name="size" value="small" />
+                <button class="btn" type="submit">Add to Cart</button>
+              </form>
+            </div>
+          </div>
         </article>
       {{else}}
         <p>No items found in this category.</p>

@@ -642,15 +642,6 @@ const menuItems = [
     price_small: 5.99,
     price_large: 8.49,
     image_url: '/images/home12.jpg'
-  },
-  {
-    id: 71,
-    category_id: 1,
-    name: 'Fresh Garden Salad',
-    ingredients: 'Lettuce, cucumber, tomato, carrots, lemon dressing',
-    price_small: 5.79,
-    price_large: 8.29,
-    image_url: '/images/salad_chicken_caesar.jpg'
   }
 ];
 
