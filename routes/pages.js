@@ -1,9 +1,9 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const { getMenuItems, getAdminOrders, clearAdminOrders } = require('../data/store');
 
 const router = express.Router();
-const CONTACT_EMAIL_TO = 'sam_1072@yahoo.com';
+const CONTACT_EMAIL_TO = process.env.CONTACT_EMAIL_TO || 'sam_1072@yahoo.com';
 const ADMIN_USERNAME = 'alyamani';
 const ADMIN_PASSWORD = 'alyamani';
 const ADMIN_COOKIE = 'adminAuth';
@@ -37,20 +37,9 @@ const parseCookies = (cookieHeader = '') =>
 
 const isAdminLoggedIn = (req) => parseCookies(req.headers.cookie || '')[ADMIN_COOKIE] === '1';
 
-const smtpPort = Number(process.env.SMTP_PORT || 587);
-const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465;
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: smtpPort,
-  secure: smtpSecure,
-  auth: process.env.SMTP_USER && process.env.SMTP_PASS
-    ? {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS
-    }
-    : undefined
-});
+const resendApiKey = process.env.RESEND_API_KEY;
+const resendFrom = process.env.RESEND_FROM;
+const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 router.get('/', (req, res) => {
   res.render('home', { title: 'Home', bodyClass: 'home-page' });
@@ -140,28 +129,35 @@ router.post('/contact', async (req, res) => {
   const trimmedPhone = String(phone).trim();
   const trimmedSubject = String(subject).trim();
   const trimmedMessage = String(message).trim();
+  const formData = {
+    name: trimmedName,
+    email: trimmedEmail,
+    phone: trimmedPhone,
+    subject: trimmedSubject,
+    message: trimmedMessage
+  };
 
   if (!trimmedName || !trimmedEmail || !trimmedSubject || !trimmedMessage) {
     return res.status(400).render('contact', {
       title: 'Contact',
       bodyClass: 'contact-page',
-      errorMessage: 'Please fill in all required fields before sending your message.'
+      errorMessage: 'Please fill in all required fields before sending your message.',
+      formData
     });
   }
 
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+  if (!resend || !resendApiKey || !resendFrom) {
     return res.status(500).render('contact', {
       title: 'Contact',
       bodyClass: 'contact-page',
-      errorMessage: 'Email service is not configured yet. Please set SMTP settings in .env.'
+      errorMessage: 'Email service is not configured yet. Please set RESEND_API_KEY and RESEND_FROM in .env.',
+      formData
     });
   }
 
-  const fromAddress = process.env.CONTACT_FROM_EMAIL || process.env.SMTP_USER;
-
   try {
-    await transporter.sendMail({
-      from: fromAddress,
+    const { error } = await resend.emails.send({
+      from: resendFrom,
       to: CONTACT_EMAIL_TO,
       replyTo: trimmedEmail,
       subject: `Contact Form: ${trimmedSubject}`,
@@ -185,6 +181,16 @@ router.post('/contact', async (req, res) => {
       `
     });
 
+    if (error) {
+      console.error('Contact email send failed:', error);
+      return res.status(500).render('contact', {
+        title: 'Contact',
+        bodyClass: 'contact-page',
+        errorMessage: 'Could not send your message right now. Please try again in a few minutes.',
+        formData
+      });
+    }
+
     res.render('contact', {
       title: 'Contact',
       bodyClass: 'contact-page',
@@ -192,10 +198,18 @@ router.post('/contact', async (req, res) => {
     });
   } catch (error) {
     console.error('Contact email send failed:', error);
+    const isAuthError =
+      error?.code === 'EAUTH' ||
+      error?.command === 'AUTH' ||
+      String(error?.response || '').includes('535');
+    const friendlyMessage = isAuthError
+      ? 'Email authentication failed. Please confirm your SMTP username and app password.'
+      : 'Could not send your message right now. Please try again in a few minutes.';
     res.status(500).render('contact', {
       title: 'Contact',
       bodyClass: 'contact-page',
-      errorMessage: 'Could not send your message right now. Please try again in a few minutes.'
+      errorMessage: friendlyMessage,
+      formData
     });
   }
 });

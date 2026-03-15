@@ -39,6 +39,7 @@ router.get('/menu', (req, res, next) => {
 
     res.render('menu', {
       title: 'Menu',
+      bodyClass: 'menu-page',
       categories: orderedGrouped
     });
   } catch (error) {
