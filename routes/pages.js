@@ -1,5 +1,5 @@
 const express = require('express');
-const { Resend } = require('resend');
+const nodemailer = require('nodemailer');
 const { getMenuItems, getAdminOrders, clearAdminOrders } = require('../data/store');
 
 const router = express.Router();
@@ -37,9 +37,24 @@ const parseCookies = (cookieHeader = '') =>
 
 const isAdminLoggedIn = (req) => parseCookies(req.headers.cookie || '')[ADMIN_COOKIE] === '1';
 
-const resendApiKey = process.env.RESEND_API_KEY;
-const resendFrom = process.env.RESEND_FROM;
-const resend = resendApiKey ? new Resend(resendApiKey) : null;
+const smtpHost = process.env.SMTP_HOST;
+const smtpPort = Number(process.env.SMTP_PORT || 0);
+const smtpSecure = String(process.env.SMTP_SECURE || '').toLowerCase() === 'true';
+const smtpUser = process.env.SMTP_USER;
+const smtpPass = process.env.SMTP_PASS;
+const contactFromEmail = process.env.CONTACT_FROM_EMAIL || smtpUser;
+const transporter =
+  smtpHost && smtpPort && smtpUser && smtpPass
+    ? nodemailer.createTransport({
+        host: smtpHost,
+        port: smtpPort,
+        secure: smtpSecure,
+        auth: {
+          user: smtpUser,
+          pass: smtpPass
+        }
+      })
+    : null;
 
 router.get('/', (req, res) => {
   res.render('home', { title: 'Home', bodyClass: 'home-page' });
@@ -146,18 +161,19 @@ router.post('/contact', async (req, res) => {
     });
   }
 
-  if (!resend || !resendApiKey || !resendFrom) {
+  if (!transporter || !contactFromEmail || !CONTACT_EMAIL_TO) {
     return res.status(500).render('contact', {
       title: 'Contact',
       bodyClass: 'contact-page',
-      errorMessage: 'Email service is not configured yet. Please set RESEND_API_KEY and RESEND_FROM in .env.',
+      errorMessage:
+        'Email service is not configured yet. Please set SMTP_* and CONTACT_FROM_EMAIL in .env.',
       formData
     });
   }
 
   try {
-    const { error } = await resend.emails.send({
-      from: resendFrom,
+    await transporter.sendMail({
+      from: contactFromEmail,
       to: CONTACT_EMAIL_TO,
       replyTo: trimmedEmail,
       subject: `Contact Form: ${trimmedSubject}`,
@@ -180,16 +196,6 @@ router.post('/contact', async (req, res) => {
         <p>${trimmedMessage.replace(/\n/g, '<br>')}</p>
       `
     });
-
-    if (error) {
-      console.error('Contact email send failed:', error);
-      return res.status(500).render('contact', {
-        title: 'Contact',
-        bodyClass: 'contact-page',
-        errorMessage: 'Could not send your message right now. Please try again in a few minutes.',
-        formData
-      });
-    }
 
     res.render('contact', {
       title: 'Contact',
