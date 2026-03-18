@@ -77,30 +77,25 @@ h1 {
   align-items: center;
   gap: 0.25rem;
   flex-wrap: wrap;
-  padding: 0.2rem;
-  border: 1px solid #353e52;
-  border-radius: 999px;
-  background: rgba(24, 30, 42, 0.78);
+  padding: 0.1rem;
   backdrop-filter: blur(4px);
 }
 
 .navbar a.cart-nav-link {
-  margin-left: 0.6rem;
+  margin-left: 0.9rem;
 }
 
 .navbar a {
   text-decoration: none;
   color: #dbe0ea;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.85rem;
-  padding: 1.1rem 0.6rem;
-  border-radius: 999px;
+  padding: 0.6rem 0.6rem;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
 .navbar a:hover {
   color: #fff;
-  background: #2f3749;
   transform: translateY(-1px);
 }
 
