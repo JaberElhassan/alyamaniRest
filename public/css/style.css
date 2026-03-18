@@ -20,7 +20,7 @@ html {
 body {
   margin: 0;
   font-family: "Times New Roman", Times, serif;
-  /* background: radial-gradient(circle at 20% 10%, #252b38 0%, #141924 45%, #0b0f17 100%); */
+  background: radial-gradient(circle at 20% 10%, #252b38 0%, #141924 45%, #0b0f17 100%);
   background: linear-gradient(180deg, #1f1f2a 0%, #171721 100%);;
   color: var(--text);
 }
@@ -1807,76 +1807,7 @@ body.others-page .navbar a {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-@media (max-width: 560px) {
-  .menu-title {
-    font-size: 1.5rem;
-  }
 
-  .menu-section-title {
-    font-size: 0.95rem;
-  }
-
-  .menu-category-links {
-    gap: 0.10rem;
-    margin: 0 0 1.2rem;
-  }
-
-  .menu-category-links a {
-    padding: 0.35rem 0.2rem;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-  }
-
-  .menu-card-media {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    align-items: flex-start;
-    flex: 0 0 160px;
-  }
-
-  .menu-card-media .btn {
-    font-size: 0.68rem;
-    padding: 0.25rem 0.45rem;
-    margin-top: 0;
-  }
-
-  .menu-card-action .btn {
-    font-size: 0.68rem;
-    padding: 0.25rem 0.45rem;
-  }
-
-  .menu-card {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.75rem;
-    align-items: flex-start;
-  }
-
-  .menu-card img {
-    width: 160px;
-    height: 180px;
-    max-width: none;
-  }
-
-  .menu-card-body {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    font-size: clamp(10px, 2.2vw, 12px);
-    line-height: 1.35;
-  }
-
-  .menu-card-body h3 {
-    font-size: clamp(11px, 2.6vw, 14px);
-    margin: 0;
-  }
-
-  .menu-card-body p {
-    margin: 0;
-  }
-
-}
 
 .detail-card {
   display: grid;
@@ -2291,13 +2222,6 @@ body.others-page .navbar a {
     grid-template-columns: 1fr;
   }
 
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.7rem;
-    padding: 0.85rem 1rem;
-  }
-
   .navbar {
     width: 100%;
     border-radius: 14px;
@@ -2332,9 +2256,7 @@ body.others-page .navbar a {
     margin: 1.4rem auto;
   }
 
-  .site-header {
-    padding: 0.8rem 1rem;
-  }
+ 
 
   .navbar a {
     padding: 0.44rem 0.68rem;
@@ -2494,11 +2416,7 @@ body.others-page .navbar a {
 }
 
 @media (max-width: 768px) and (min-width: 481px) {
-  .site-header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.6rem;
-  }
+  
 
   .brand {
     justify-content: center;
@@ -2533,37 +2451,31 @@ body.others-page .navbar a {
 
 @media (max-width: 1024px) {
   .site-header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas:
-      "brand brand brand"
-      "menu . cart"
-      "nav nav nav";
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 0.55rem;
   }
 
   .brand {
-    grid-area: brand;
-    width: 100%;
-    justify-content: center;
+    width: auto;
+    justify-content: flex-start;
+    order: 2;
   }
 
   .menu-toggle {
-    grid-area: menu;
     display: inline-block;
     align-self: center;
+    order: 1;
   }
 
   .cart-mobile-icon {
-    grid-area: cart;
     display: inline-flex;
     align-self: center;
-    justify-self: flex-end;
+    order: 3;
   }
 
   .site-header .navbar {
-    grid-area: nav;
     display: grid;
     width: 100%;
     position: absolute;
