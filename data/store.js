@@ -4,35 +4,200 @@ const path = require('path');
 const ADMIN_ORDERS_FILE = path.join(__dirname, 'admin-orders.json');
 
 const categories = [
-  { id: 1, name: 'Salad' },
+  { id: 1, name: 'Sides' },
   { id: 2, name: 'Sandwiches' },
-  { id: 3, name: 'Juice' },
-  { id: 4, name: 'Drink' },
-  { id: 5, name: 'Sides' },
-  { id: 6, name: 'Others' }
+  { id: 3, name: 'Salad' },
+  { id: 4, name: 'Beverage' },
+  { id: 5, name: 'Others' }
 ];
 
 const menuItems = [
   {
     id: 1,
     category_id: 1,
-    name: 'Greek Salad',
-    ingredients: 'Lettuce, tomato, cucumber, olives, feta',
-    price_small: 5.99,
-    price_large: 8.99,
-    image_url: '/images/salad_chicken_caesar.jpg'
+    name: 'French Fries',
+    ingredients: 'Potatoes, salt, oil',
+    price_small: 4.00,
+    price_large: 4.00,
+    image_url: '/images/frenchFries.jpg'
   },
   {
     id: 2,
     category_id: 1,
-    name: 'Chicken Caesar Salad',
-    ingredients: 'Chicken, romaine, parmesan, croutons, Caesar dressing',
-    price_small: 6.99,
-    price_large: 9.99,
-    image_url: '/images/salad_chicken_pasta.jpg'
+    name: 'Onion Rings',
+    ingredients: 'Onions, flour, batter, oil',
+    price_small: 6.00,
+    price_large: 6.00,
+    image_url: '/images/onion_rings.jpg'
   },
   {
     id: 3,
+    category_id: 1,
+    name: 'Curly Fries',
+    ingredients: 'Seasoned curly potatoes, salt',
+    price_small: 6.00,
+    price_large: 6.00,
+    image_url: '/images/potatoes_curly.jpg'
+  },
+  {
+    id: 4,
+    category_id: 1,
+    name: 'Chicken Nuggets',
+    ingredients: 'Crispy chicken nuggets, ketchup',
+    price_small: 6.00,
+    price_large: 6.00,
+    image_url: '/images/side_nuggets_kids.jpg'
+  },
+  {
+    id: 5,
+    category_id: 1,
+    name: 'Shrimps Dynamite',
+    ingredients: '8 Jumbo Crispy Pcs served with Dynamite Sauce',
+    price_small: 8.00,
+    price_large: 8.00,
+    image_url: '/images/shrimps_dynamite.jpg'
+  },
+// deleted  id: 41
+  {
+    id: 42,
+    category_id: 1,
+    name: 'Wedges Fries',
+    ingredients: 'Potato wedges, herbs, salt',
+    price_small: 2.99,
+    price_large: 4.49,
+    image_url: '/images/potatoes_wedges.jpg'
+  },
+  {
+    id: 43,
+    category_id: 1,
+    name: 'Mozzarella Rolls',
+    ingredients: 'Mozzarella sticks, crispy coating',
+    price_small: 3.49,
+    price_large: 4.99,
+    image_url: '/images/mozzarella_rolls_fried.jpg'
+  },
+  // deleted id 44
+
+  // deleted id 45
+
+  {
+    id: 46,
+    category_id: 1,
+    name: 'Charcoal Grilled Whole Chicken Meal',
+    ingredients: 'Grilled chicken bites, garlic dip',
+    price_small: 4.49,
+    price_large: 6.29,
+    image_url: '/images/side_chicken_1.jpg'
+  },
+  {
+    id: 47,
+    category_id: 1,
+    name: 'Whole Chicken Meal',
+    ingredients: 'Chicken strips, fries, sauces',
+    price_small: 4.99,
+    price_large: 6.79,
+    image_url: '/images/side_chicken_2.jpg'
+  },
+  {
+    id: 48,
+    category_id: 1,
+    name: 'Chicken Tawouk Meal',
+    ingredients: 'Tawouk cubes, garlic cream',
+    price_small: 4.79,
+    price_large: 6.59,
+    image_url: '/images/side_chicken_tawouk.jpg'
+  },
+  {
+    id: 49,
+    category_id: 1,
+    name: 'Beef Falet Meal',
+    ingredients: 'Beef falet slices, tahini dip',
+    price_small: 5.19,
+    price_large: 6.99,
+    image_url: '/images/side_shawarma_beef_falet.jpg'
+  },
+  {
+    id: 50,
+    category_id: 1,
+    name: 'Beef Markouk Meal',
+    ingredients: 'Beef markouk pieces, house dip',
+    price_small: 5.29,
+    price_large: 7.09,
+    image_url: '/images/side_shawarma_beef_markouk.jpg'
+  },
+ // deleted id 51
+  
+  // deleted id 52
+
+  // deleted id 53
+  
+   // deleted id 54
+  
+   // deleted id 55
+ 
+  {
+    id: 256,
+    category_id: 2,
+    name: 'Charcoal Grilled Tawouk',
+    ingredients: 'Mini tawouk skewers, garlic dip',
+    price_small: 4.59,
+    price_large: 6.39,
+    image_url: '/images/tawouk_fahem.jpg'
+  },
+  {
+    id: 57,
+    category_id: 1,
+    name: 'Shawarma Mix Meal',
+    ingredients: 'Chicken and beef shawarma bites',
+    price_small: 5.49,
+    price_large: 7.39,
+    image_url: '/images/shawarma_mshakal.jpg'
+  },
+  {
+    id: 258,
+    category_id: 2,
+    name: 'Charcoal Grilled Chicken',
+    ingredients: 'Fahem chicken strips, dip',
+    price_small: 4.69,
+    price_large: 6.49,
+    image_url: '/images/chicken_fahem.jpg'
+  },
+  {
+    id: 259,
+    category_id: 2,
+    name: 'Habaa Chicken',
+    ingredients: 'Habaa chicken bites, spicy sauce',
+    price_small: 4.69,
+    price_large: 6.49,
+    image_url: '/images/chicken_habaa.jpg'
+  },
+
+
+  // delete id 60
+
+  {
+    id: 71,
+    category_id: 1,
+    name: 'Winga BBQ',
+    ingredients: '8 wings Pcs dipped in BBQ Sauce',
+    price_small: 6.00,
+    price_large: 6.00,
+    image_url: '/images/side_wings_bbq.jpg'
+  },
+  {
+    id: 72,
+    category_id: 1,
+    name: 'Wings Dynamite',
+    ingredients: '8 Wings Pcs Dipped in Dynamite Sauce',
+    price_small: 6.00,
+    price_large: 6.00,
+    image_url: '/images/side_wings_dynamite.jpg'
+  },
+
+
+  // Sandwishes Menu
+  {
+    id: 203,
     category_id: 2,
     name: 'Club Sandwich',
     ingredients: 'Chicken, lettuce, tomato, mayo, bread',
@@ -41,7 +206,7 @@ const menuItems = [
     image_url: '/images/shawarma-1.jpeg'
   },
   {
-    id: 4,
+    id: 204,
     category_id: 2,
     name: 'Veggie Sandwich',
     ingredients: 'Grilled vegetables, cheese, pesto, bread',
@@ -50,88 +215,7 @@ const menuItems = [
     image_url: '/images/pizza_vegy.jpg'
   },
   {
-    id: 5,
-    category_id: 3,
-    name: 'Orange Juice',
-    ingredients: 'Fresh orange extract, ice',
-    price_small: 2.99,
-    price_large: 4.49,
-    image_url: '/images/drink_juice.jpg'
-  },
-  {
-    id: 6,
-    category_id: 3,
-    name: 'Mixed Berry Juice',
-    ingredients: 'Strawberry, blueberry, raspberry, mint',
-    price_small: 3.49,
-    price_large: 4.99,
-    image_url: '/images/drink_maccaw.jpg'
-  },
-  {
-    id: 7,
-    category_id: 4,
-    name: 'Cola',
-    ingredients: 'Carbonated water, flavor syrup',
-    price_small: 1.99,
-    price_large: 2.99,
-    image_url: '/images/drink_soft.jpg'
-  },
-  {
-    id: 8,
-    category_id: 4,
-    name: 'Iced Tea',
-    ingredients: 'Tea extract, lemon, ice',
-    price_small: 2.49,
-    price_large: 3.49,
-    image_url: '/images/drink_lipton.jpg'
-  },
-  {
-    id: 9,
-    category_id: 5,
-    name: 'French Fries',
-    ingredients: 'Potatoes, salt, oil',
-    price_small: 2.49,
-    price_large: 3.99,
-    image_url: '/images/potatoes_wedges.jpg'
-  },
-  {
-    id: 10,
-    category_id: 5,
-    name: 'Onion Rings',
-    ingredients: 'Onions, flour, batter, oil',
-    price_small: 2.99,
-    price_large: 4.49,
-    image_url: '/images/onion_rings.jpg'
-  },
-  {
-    id: 11,
-    category_id: 6,
-    name: 'Chocolate Brownie',
-    ingredients: 'Cocoa, flour, butter, sugar',
-    price_small: 3.49,
-    price_large: 4.99,
-    image_url: '/images/home17.jpg'
-  },
-  {
-    id: 12,
-    category_id: 6,
-    name: 'Cheese Dip',
-    ingredients: 'Cheddar cheese, cream, spices',
-    price_small: 1.99,
-    price_large: 3.49,
-    image_url: '/images/mozzarella_rolls_fried.jpg'
-  },
-  {
-    id: 13,
-    category_id: 1,
-    name: 'Shrimps Korab Salad',
-    ingredients: 'Shrimps, greens, cucumber, lemon dressing',
-    price_small: 7.49,
-    price_large: 10.49,
-    image_url: '/images/salad_shrimps_korab.jpg'
-  },
-  {
-    id: 14,
+    id: 214,
     category_id: 2,
     name: 'Chicken Shawarma Wrap',
     ingredients: 'Chicken shawarma, garlic sauce, pickles, saj bread',
@@ -140,7 +224,7 @@ const menuItems = [
     image_url: '/images/shawarma_chicken_turkish.jpg'
   },
   {
-    id: 15,
+    id: 215,
     category_id: 2,
     name: 'Beef Shawarma Wrap',
     ingredients: 'Beef shawarma, tahini sauce, onions, saj bread',
@@ -149,52 +233,7 @@ const menuItems = [
     image_url: '/images/shawarma_beef_turkish.jpg'
   },
   {
-    id: 16,
-    category_id: 3,
-    name: 'Fresh Laban',
-    ingredients: 'Cold laban, mint',
-    price_small: 2.49,
-    price_large: 3.49,
-    image_url: '/images/drink_laban.jpg'
-  },
-  {
-    id: 17,
-    category_id: 4,
-    name: 'Mineral Water',
-    ingredients: 'Chilled bottled water',
-    price_small: 0.99,
-    price_large: 1.49,
-    image_url: '/images/drink_water.jpg'
-  },
-  {
-    id: 18,
-    category_id: 5,
-    name: 'Curly Potatoes',
-    ingredients: 'Seasoned curly potatoes, salt',
-    price_small: 2.99,
-    price_large: 4.49,
-    image_url: '/images/potatoes_curly.jpg'
-  },
-  {
-    id: 19,
-    category_id: 5,
-    name: 'Chicken Nuggets Kids',
-    ingredients: 'Crispy chicken nuggets, ketchup',
-    price_small: 3.49,
-    price_large: 4.99,
-    image_url: '/images/side_nuggets_kids.jpg'
-  },
-  {
-    id: 20,
-    category_id: 6,
-    name: 'Dynamita Shrimps',
-    ingredients: 'Crispy shrimps, spicy dynamita sauce',
-    price_small: 6.99,
-    price_large: 9.99,
-    image_url: '/images/shrimps_dinamita.jpg'
-  },
-  {
-    id: 21,
+    id: 221,
     category_id: 2,
     name: 'Mexican Chicken Sandwich',
     ingredients: 'Grilled chicken, jalapeno, lettuce, chipotle mayo',
@@ -203,7 +242,7 @@ const menuItems = [
     image_url: '/images/burger_mexican_spicy.jpg'
   },
   {
-    id: 22,
+    id: 222,
     category_id: 2,
     name: 'Yamani Burger Sandwich',
     ingredients: 'Beef patty, cheese, onion, house sauce',
@@ -212,7 +251,7 @@ const menuItems = [
     image_url: '/images/burger_alyamani.jpg'
   },
   {
-    id: 23,
+    id: 223,
     category_id: 2,
     name: 'Chicken Fahita Sandwich',
     ingredients: 'Fahita chicken, peppers, onions, garlic sauce',
@@ -221,7 +260,7 @@ const menuItems = [
     image_url: '/images/fahita_chicken.jpg'
   },
   {
-    id: 24,
+    id: 224,
     category_id: 2,
     name: 'Fahem Chicken Wrap',
     ingredients: 'Char-grilled chicken, pickles, garlic cream',
@@ -230,7 +269,7 @@ const menuItems = [
     image_url: '/images/chicken_fahem.jpg'
   },
   {
-    id: 25,
+    id: 225,
     category_id: 2,
     name: 'Habaa Chicken Wrap',
     ingredients: 'Marinated chicken, lettuce, spicy mayo',
@@ -239,7 +278,7 @@ const menuItems = [
     image_url: '/images/chicken_habaa.jpg'
   },
   {
-    id: 26,
+    id: 226,
     category_id: 2,
     name: 'Tawouk Sandwich',
     ingredients: 'Chicken tawouk, garlic sauce, fries inside',
@@ -248,7 +287,7 @@ const menuItems = [
     image_url: '/images/tawouk_fahem.jpg'
   },
   {
-    id: 27,
+    id: 227,
     category_id: 2,
     name: 'Mixed Shawarma Sandwich',
     ingredients: 'Chicken and beef shawarma, pickles, tahini',
@@ -257,7 +296,7 @@ const menuItems = [
     image_url: '/images/shawarma_mshakal.jpg'
   },
   {
-    id: 28,
+    id: 228,
     category_id: 2,
     name: 'Chicken Markouk Sandwich',
     ingredients: 'Chicken shawarma, markouk bread, garlic sauce',
@@ -266,7 +305,7 @@ const menuItems = [
     image_url: '/images/side_chicken_1.jpg'
   },
   {
-    id: 29,
+    id: 229,
     category_id: 2,
     name: 'Chicken Saj Sandwich',
     ingredients: 'Saj chicken, tomatoes, pickles, sauce',
@@ -275,7 +314,7 @@ const menuItems = [
     image_url: '/images/side_chicken_2.jpg'
   },
   {
-    id: 30,
+    id: 230,
     category_id: 2,
     name: 'Chicken Tawouk Saj',
     ingredients: 'Tawouk strips, lettuce, garlic paste',
@@ -284,7 +323,7 @@ const menuItems = [
     image_url: '/images/side_chicken_tawouk.jpg'
   },
   {
-    id: 31,
+    id: 231,
     category_id: 2,
     name: 'Beef Falet Sandwich',
     ingredients: 'Beef strips, onion, parsley, tahini',
@@ -293,7 +332,7 @@ const menuItems = [
     image_url: '/images/side_shawarma_beef_falet.jpg'
   },
   {
-    id: 32,
+    id: 232,
     category_id: 2,
     name: 'Beef Markouk Sandwich',
     ingredients: 'Beef shawarma, markouk bread, tahini sauce',
@@ -302,7 +341,7 @@ const menuItems = [
     image_url: '/images/side_shawarma_beef_markouk.jpg'
   },
   {
-    id: 33,
+    id: 233,
     category_id: 2,
     name: 'Chicken Turkish Sandwich',
     ingredients: 'Turkish chicken shawarma, pickles, fries',
@@ -311,7 +350,7 @@ const menuItems = [
     image_url: '/images/shawarma_chicken_turkish.jpg'
   },
   {
-    id: 34,
+    id: 234,
     category_id: 2,
     name: 'Beef Turkish Sandwich',
     ingredients: 'Turkish beef shawarma, onions, tahini',
@@ -320,7 +359,7 @@ const menuItems = [
     image_url: '/images/shawarma_beef_turkish.jpg'
   },
   {
-    id: 35,
+    id: 235,
     category_id: 2,
     name: 'Classic Shawarma Roll',
     ingredients: 'Chicken shawarma, garlic, pickles',
@@ -329,7 +368,7 @@ const menuItems = [
     image_url: '/images/shawarma-1.jpeg'
   },
   {
-    id: 36,
+    id: 236,
     category_id: 2,
     name: 'Spicy Shawarma Roll',
     ingredients: 'Spicy chicken shawarma, hot sauce, fries',
@@ -338,7 +377,7 @@ const menuItems = [
     image_url: '/images/shawarma-2.jpeg'
   },
   {
-    id: 37,
+    id: 237,
     category_id: 2,
     name: 'Garlic Shawarma Roll',
     ingredients: 'Chicken shawarma, extra garlic, pickles',
@@ -347,7 +386,7 @@ const menuItems = [
     image_url: '/images/shawarma-3.jpeg'
   },
   {
-    id: 38,
+    id: 238,
     category_id: 2,
     name: 'Alyamani Special Sandwich',
     ingredients: 'Mixed meat, cheese, signature sauce',
@@ -356,7 +395,7 @@ const menuItems = [
     image_url: '/images/burger_alyamani.jpg'
   },
   {
-    id: 39,
+    id: 239,
     category_id: 2,
     name: 'Chicken Melt Sandwich',
     ingredients: 'Chicken strips, melted cheese, mayo',
@@ -365,7 +404,7 @@ const menuItems = [
     image_url: '/images/chicken_fahem.jpg'
   },
   {
-    id: 40,
+    id: 240,
     category_id: 2,
     name: 'Double Chicken Sandwich',
     ingredients: 'Double chicken, lettuce, pickles, sauce',
@@ -373,189 +412,149 @@ const menuItems = [
     price_large: 9.99,
     image_url: '/images/chicken_habaa.jpg'
   },
+
+
+
+  // Salad Menu
   {
-    id: 41,
-    category_id: 5,
-    name: 'Curly Fries',
-    ingredients: 'Crispy curly fries, seasoning',
-    price_small: 2.89,
-    price_large: 4.39,
-    image_url: '/images/potatoes_curly.jpg'
+    id: 301,
+    category_id: 3,
+    name: 'Greek Salad',
+    ingredients: 'Lettuce, tomato, cucumber, olives, feta',
+    price_small: 4.00,
+    price_large: 4.00,
+    image_url: '/images/salad_greek_caesar.jpg'
   },
   {
-    id: 42,
-    category_id: 5,
-    name: 'Wedges Potatoes',
-    ingredients: 'Potato wedges, herbs, salt',
+    id: 302,
+    category_id: 3,
+    name: 'Chicken Pasta Salad',
+    ingredients: 'Chicken, romaine, parmesan, croutons, Caesar dressing',
+    price_small: 6.99,
+    price_large: 9.99,
+    image_url: '/images/salad_chicken_pasta.jpg'
+  },
+  {
+    id: 313,
+    category_id: 3,
+    name: 'Shrimps & Crab Salad',
+    ingredients: 'Crab Dressing , Lettuce , Carrots , Cherry Tomatoes & Crunchy Crotons',
+    price_small: 10.00,
+    price_large: 10.00,
+    image_url: '/images/salad_shrimps_crab.jpg'
+  },
+  {
+    id: 400,
+    category_id: 3,
+    name: 'Shrimps Salad',
+    ingredients: 'Crab Dressing , Lettuce , Carrots , Cherry Tomatoes & Crunchy Crotons',
+    price_small: 8.00,
+    price_large: 8.00,
+    image_url: '/images/salad_shrimps.jpg'
+  },
+  {
+    id: 401,
+    category_id: 3,
+    name: 'Crab Salad',
+    ingredients: 'Crab Dressing , Lettuce , Corn , Cherry Tomatoes, Carrot & Crunchy Crotons',
+    price_small: 8.00,
+    price_large: 8.00,
+    image_url: '/images/salad_crab.jpg'
+  },
+  {
+    id: 402,
+    category_id: 3,
+    name: 'Fatoush Salad',
+    ingredients: 'mixed greens, cucumbers, tomatoes, radishes, and herbs tossed with crispy fried or toasted pita',
+    price_small: 6.00,
+    price_large: 6.00,
+    image_url: '/images/salad_fatoush.jpg'
+  },
+
+  {
+    id: 73,
+    category_id: 1,
+    name: 'Wings Honey Mustard',
+    ingredients: '8 wings pcs dipped In Honey Mustard Sauce',
+    price_small: 7.49,
+    price_large: 10.49,
+    image_url: '/images/side_wings_honey_mustard.jpg'
+  },
+  {
+    id: 405,
+    category_id: 4,
+    name: 'Orange Juice',
+    ingredients: 'Fresh orange extract, ice',
     price_small: 2.99,
     price_large: 4.49,
-    image_url: '/images/potatoes_wedges.jpg'
+    image_url: '/images/drink_juice.jpg'
   },
   {
-    id: 43,
-    category_id: 5,
-    name: 'Mozzarella Rolls',
-    ingredients: 'Mozzarella sticks, crispy coating',
+    id: 406,
+    category_id: 4,
+    name: 'Mixed Berry Juice',
+    ingredients: 'Strawberry, blueberry, raspberry, mint',
     price_small: 3.49,
     price_large: 4.99,
+    image_url: '/images/drink_maccaw.jpg'
+  },
+  {
+    id: 407,
+    category_id: 4,
+    name: 'Cola',
+    ingredients: 'Carbonated water, flavor syrup',
+    price_small: 1.99,
+    price_large: 2.99,
+    image_url: '/images/drink_soft.jpg'
+  },
+  {
+    id: 408,
+    category_id: 4,
+    name: 'Iced Tea',
+    ingredients: 'Tea extract, lemon, ice',
+    price_small: 2.49,
+    price_large: 3.49,
+    image_url: '/images/drink_lipton.jpg'
+  },
+  {
+    id: 416,
+    category_id: 4,
+    name: 'Fresh Laban',
+    ingredients: 'Cold laban, mint',
+    price_small: 2.49,
+    price_large: 3.49,
+    image_url: '/images/drink_laban.jpg'
+  },
+  {
+    id: 417,
+    category_id: 4,
+    name: 'Mineral Water',
+    ingredients: 'Chilled bottled water',
+    price_small: 0.99,
+    price_large: 1.49,
+    image_url: '/images/drink_water.jpg'
+  },
+  {
+    id: 511,
+    category_id: 5,
+    name: 'Chocolate Brownie',
+    ingredients: 'Cocoa, flour, butter, sugar',
+    price_small: 3.49,
+    price_large: 4.99,
+    image_url: '/images/home17.jpg'
+  },
+  {
+    id: 512,
+    category_id: 5,
+    name: 'Mozzarella Sticks',
+    ingredients: 'Cheddar cheese, cream, spices',
+    price_small: 5.00,
+    price_large: 5.00,
     image_url: '/images/mozzarella_rolls_fried.jpg'
   },
   {
-    id: 44,
+    id: 561,
     category_id: 5,
-    name: 'Onion Rings Basket',
-    ingredients: 'Golden onion rings, dipping sauce',
-    price_small: 3.19,
-    price_large: 4.79,
-    image_url: '/images/onion_rings.jpg'
-  },
-  {
-    id: 45,
-    category_id: 5,
-    name: 'Chicken Nuggets',
-    ingredients: 'Crispy nuggets, ketchup',
-    price_small: 3.39,
-    price_large: 4.89,
-    image_url: '/images/side_nuggets_kids.jpg'
-  },
-  {
-    id: 46,
-    category_id: 5,
-    name: 'Chicken Side Plate',
-    ingredients: 'Grilled chicken bites, garlic dip',
-    price_small: 4.49,
-    price_large: 6.29,
-    image_url: '/images/side_chicken_1.jpg'
-  },
-  {
-    id: 47,
-    category_id: 5,
-    name: 'Chicken Side Combo',
-    ingredients: 'Chicken strips, fries, sauces',
-    price_small: 4.99,
-    price_large: 6.79,
-    image_url: '/images/side_chicken_2.jpg'
-  },
-  {
-    id: 48,
-    category_id: 5,
-    name: 'Chicken Tawouk Side',
-    ingredients: 'Tawouk cubes, garlic cream',
-    price_small: 4.79,
-    price_large: 6.59,
-    image_url: '/images/side_chicken_tawouk.jpg'
-  },
-  {
-    id: 49,
-    category_id: 5,
-    name: 'Beef Falet Side',
-    ingredients: 'Beef falet slices, tahini dip',
-    price_small: 5.19,
-    price_large: 6.99,
-    image_url: '/images/side_shawarma_beef_falet.jpg'
-  },
-  {
-    id: 50,
-    category_id: 5,
-    name: 'Beef Markouk Side',
-    ingredients: 'Beef markouk pieces, house dip',
-    price_small: 5.29,
-    price_large: 7.09,
-    image_url: '/images/side_shawarma_beef_markouk.jpg'
-  },
-  {
-    id: 51,
-    category_id: 5,
-    name: 'Spicy Fries',
-    ingredients: 'French fries, spicy seasoning',
-    price_small: 2.99,
-    price_large: 4.59,
-    image_url: '/images/potatoes_wedges.jpg'
-  },
-  {
-    id: 52,
-    category_id: 5,
-    name: 'Cheese Fries',
-    ingredients: 'Fries, cheese sauce, herbs',
-    price_small: 3.39,
-    price_large: 4.99,
-    image_url: '/images/potatoes_curly.jpg'
-  },
-  {
-    id: 53,
-    category_id: 5,
-    name: 'Loaded Onion Rings',
-    ingredients: 'Onion rings, cheese, spicy mayo',
-    price_small: 3.49,
-    price_large: 5.19,
-    image_url: '/images/onion_rings.jpg'
-  },
-  {
-    id: 54,
-    category_id: 5,
-    name: 'Garlic Potatoes',
-    ingredients: 'Potatoes, garlic butter, parsley',
-    price_small: 3.19,
-    price_large: 4.69,
-    image_url: '/images/home64.jpg'
-  },
-  {
-    id: 55,
-    category_id: 5,
-    name: 'Crispy Mix Side',
-    ingredients: 'Fries, onion rings, nuggets',
-    price_small: 4.99,
-    price_large: 6.99,
-    image_url: '/images/side_nuggets_kids.jpg'
-  },
-  {
-    id: 56,
-    category_id: 5,
-    name: 'Tawouk Bites',
-    ingredients: 'Mini tawouk skewers, garlic dip',
-    price_small: 4.59,
-    price_large: 6.39,
-    image_url: '/images/tawouk_fahem.jpg'
-  },
-  {
-    id: 57,
-    category_id: 5,
-    name: 'Shawarma Side Mix',
-    ingredients: 'Chicken and beef shawarma bites',
-    price_small: 5.49,
-    price_large: 7.39,
-    image_url: '/images/shawarma_mshakal.jpg'
-  },
-  {
-    id: 58,
-    category_id: 5,
-    name: 'Fahem Chicken Side',
-    ingredients: 'Fahem chicken strips, dip',
-    price_small: 4.69,
-    price_large: 6.49,
-    image_url: '/images/chicken_fahem.jpg'
-  },
-  {
-    id: 59,
-    category_id: 5,
-    name: 'Habaa Chicken Side',
-    ingredients: 'Habaa chicken bites, spicy sauce',
-    price_small: 4.69,
-    price_large: 6.49,
-    image_url: '/images/chicken_habaa.jpg'
-  },
-  {
-    id: 60,
-    category_id: 5,
-    name: 'Dynamita Side Shrimp',
-    ingredients: 'Fried shrimp, dynamita sauce',
-    price_small: 5.99,
-    price_large: 7.99,
-    image_url: '/images/shrimps_dinamita.jpg'
-  },
-  {
-    id: 61,
-    category_id: 6,
     name: 'Brownie Bites',
     ingredients: 'Chocolate brownie cubes, syrup',
     price_small: 3.29,
@@ -563,8 +562,8 @@ const menuItems = [
     image_url: '/images/home11.jpg'
   },
   {
-    id: 62,
-    category_id: 6,
+    id: 562,
+    category_id: 5,
     name: 'Sweet Cheese Dip',
     ingredients: 'Cream cheese, honey drizzle',
     price_small: 2.99,
@@ -572,8 +571,8 @@ const menuItems = [
     image_url: '/images/mozzarella_rolls_fried.jpg'
   },
   {
-    id: 63,
-    category_id: 6,
+    id: 563,
+    category_id: 5,
     name: 'Mini Pizza Bites',
     ingredients: 'Mini pizza squares, cheese, oregano',
     price_small: 4.49,
@@ -581,8 +580,8 @@ const menuItems = [
     image_url: '/images/pizza_pepperoni.jpg'
   },
   {
-    id: 64,
-    category_id: 6,
+    id: 564,
+    category_id: 5,
     name: 'Yamani Pizza Slice',
     ingredients: 'Yamani sauce, cheese, toppings',
     price_small: 4.79,
@@ -590,8 +589,8 @@ const menuItems = [
     image_url: '/images/pizza_alyamani.jpg'
   },
   {
-    id: 65,
-    category_id: 6,
+    id: 565,
+    category_id: 5,
     name: 'Veggie Pizza Slice',
     ingredients: 'Veggies, mozzarella, olive oil',
     price_small: 4.39,
@@ -599,8 +598,8 @@ const menuItems = [
     image_url: '/images/home14.jpg'
   },
   {
-    id: 66,
-    category_id: 6,
+    id: 566,
+    category_id: 5,
     name: 'Pepperoni Pizza Slice',
     ingredients: 'Pepperoni, cheese, pizza sauce',
     price_small: 4.99,
@@ -608,8 +607,8 @@ const menuItems = [
     image_url: '/images/home62.jpg'
   },
   {
-    id: 67,
-    category_id: 6,
+    id: 567,
+    category_id: 5,
     name: 'Sweet Sour Pizza Slice',
     ingredients: 'Sweet sour sauce, chicken, cheese',
     price_small: 4.89,
@@ -617,8 +616,8 @@ const menuItems = [
     image_url: '/images/pizza_sweet_sour.jpg'
   },
   {
-    id: 68,
-    category_id: 6,
+    id: 568,
+    category_id: 5,
     name: 'Mexican Pizza Slice',
     ingredients: 'Mexican chicken, jalapeno, cheese',
     price_small: 4.99,
@@ -626,25 +625,24 @@ const menuItems = [
     image_url: '/images/pizza_chicken_mexican.jpg'
   },
   {
-    id: 69,
-    category_id: 6,
+    id: 569,
+    category_id: 5,
     name: 'Shrimp Special Plate',
     ingredients: 'Shrimps, creamy sauce, herbs',
     price_small: 6.49,
     price_large: 8.99,
-    image_url: '/images/shrimps_dinamita.jpg'
+    image_url: '/images/shrimps_dynamite.jpg'
   },
   {
-    id: 70,
-    category_id: 6,
+    id: 570,
+    category_id: 5,
     name: 'Chef Surprise Dish',
     ingredients: 'Daily chef selection with house sauce',
     price_small: 5.99,
     price_large: 8.49,
     image_url: '/images/home12.jpg'
-  }
+  },
 ];
-
 const cartItems = [];
 let nextCartId = 1;
 const loadAdminOrders = () => {
