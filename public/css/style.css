@@ -886,7 +886,6 @@ body.about-page .navbar a {
   background: transparent;
   border: 1px solid transparent;
   border-radius: 16px;
-  padding: 1.2rem;
   box-shadow: none;
 }
 
@@ -915,7 +914,6 @@ body.about-page .navbar a {
   display: grid;
   grid-template-columns: minmax(260px, 1fr) minmax(0, 1.3fr);
   gap: 1rem;
-  padding: 1rem;
 }
 
 .about-image-wrap {
@@ -2484,7 +2482,6 @@ body.others-page .navbar a {
     padding-top: 0.55rem;
     padding-bottom: 0.85rem;
     border-width: 1px;
-   
     border-color: #323244;
     background: radial-gradient(circle at 20% 10%, #1a1f2b 0%, #0e121b 45%, #06080f 100%) !important;
     box-shadow: 0 14px 26px rgba(0, 0, 0, 0.35);
