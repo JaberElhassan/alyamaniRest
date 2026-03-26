@@ -6,14 +6,25 @@
     <p><strong>Ingredients:</strong> {{item.ingredients}}</p>
 
     <form method="POST" action="/cart/add/{{item.id}}" class="size-form">
-      <label>
-        <input type="radio" name="size" value="small" checked />
-        Small ({{formatCurrency item.price_small}})
-      </label>
-      <label>
-        <input type="radio" name="size" value="large" />
-        Large ({{formatCurrency item.price_large}})
-      </label>
+      {{#if item.is_single_price}}
+        <p><strong>Price:</strong> {{formatCurrency item.price}}</p>
+        <input type="hidden" name="size" value="small" />
+      {{else}}
+        <label>
+          <input type="radio" name="size" value="small" checked />
+          {{#if item.size_small_label}}{{item.size_small_label}}{{else}}S{{/if}} ({{formatCurrency item.price_small}})
+        </label>
+        {{#if item.price_medium}}
+          <label>
+            <input type="radio" name="size" value="medium" />
+            {{#if item.size_medium_label}}{{item.size_medium_label}}{{else}}M{{/if}} ({{formatCurrency item.price_medium}})
+          </label>
+        {{/if}}
+        <label>
+          <input type="radio" name="size" value="large" />
+          {{#if item.size_large_label}}{{item.size_large_label}}{{else}}L{{/if}} ({{formatCurrency item.price_large}})
+        </label>
+      {{/if}}
       <button class="btn" type="submit">Add to Cart</button>
     </form>
   </div>

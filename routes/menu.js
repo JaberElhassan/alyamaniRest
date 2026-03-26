@@ -7,6 +7,13 @@ router.get('/menu', (req, res, next) => {
     const items = getMenuItems();
     const beverageCategoryNames = new Set(['Juice', 'Drink']);
     let beverageSectionAdded = false;
+    const slugify = (value) =>
+      String(value || '')
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, 'and')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
 
     const grouped = categories.map((category) => {
       if (beverageCategoryNames.has(category.name)) {
@@ -15,16 +22,20 @@ router.get('/menu', (req, res, next) => {
         }
 
         beverageSectionAdded = true;
+        const name = 'Juice & Drink';
         return {
           id: 'juice-drink',
-          name: 'Juice & Drink',
+          name,
+          slug: slugify(name),
           items: items.filter((item) => beverageCategoryNames.has(item.category_name))
         };
       }
 
+      const name = category.name;
       return {
         id: category.id,
-        name: category.name,
+        name,
+        slug: slugify(name),
         items: items.filter((item) => item.category_name === category.name)
       };
     }).filter(Boolean);

@@ -8,7 +8,7 @@
       <ul class="checkout-item-list">
         {{#each items}}
           <li class="checkout-item-row">
-            <span>{{name}} ({{size}}) x {{quantity}}</span>
+            <span>{{name}} ({{size_label}}) x {{quantity}}</span>
             <strong>{{calcSubtotal unit_price quantity}}</strong>
           </li>
         {{/each}}

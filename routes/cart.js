@@ -90,7 +90,7 @@ router.post('/checkout', async (req, res, next) => {
 router.post('/add/:id', async (req, res, next) => {
   try {
     const menuItemId = Number(req.params.id);
-    const size = req.body.size === 'large' ? 'large' : 'small';
+    const size = req.body.size === 'large' ? 'large' : req.body.size === 'medium' ? 'medium' : 'small';
 
     const added = addToCart(menuItemId, size);
     if (!added) {

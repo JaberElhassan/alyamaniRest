@@ -1,13 +1,11 @@
 <h1 class="menu-title">Our Menu</h1>
 <nav class="menu-category-links" aria-label="Menu categories">
-  <a href="#sides">Sides</a>
-  <a href="#sandwiches">Sandwiches</a>
-  <a href="#salad">Salads</a>
-  <a href="#Beverage">Beverage</a>
-  <a href="#others">Others</a>
+  {{#each categories}}
+    <a href="#{{slug}}">{{name}}</a>
+  {{/each}}
 </nav>
 {{#each categories}}
-  <section class="menu-section" data-category="{{name}}">
+  <section class="menu-section" id="{{slug}}" data-category="{{name}}">
     <h2>
       <button class="menu-section-toggle" type="button" aria-expanded="true">
         <span class="menu-section-title">{{name}}</span>
@@ -26,8 +24,25 @@
             </div>
             <div class="menu-card-buttons">
               <a class="btn menu-view-details" href="/menu/item/{{id}}">View Details</a>
-              <form method="POST" action="/cart/add/{{id}}" class="inline-form">
-                <input type="hidden" name="size" value="small" />
+              <form method="POST" action="/cart/add/{{id}}" class="inline-form size-form">
+                {{#if is_single_price}}
+                  <input type="hidden" name="size" value="small" />
+                {{else}}
+                  {{#if size_small_label}}
+                    <div class="size-options">
+                      <label>
+                        <input type="radio" name="size" value="small" checked />
+                        {{size_small_label}} ({{formatCurrency price_small}})
+                      </label>
+                      <label>
+                        <input type="radio" name="size" value="large" />
+                        {{size_large_label}} ({{formatCurrency price_large}})
+                      </label>
+                    </div>
+                  {{else}}
+                    <input type="hidden" name="size" value="small" />
+                  {{/if}}
+                {{/if}}
                 <button class="btn" type="submit">Add to Cart</button>
               </form>
             </div>

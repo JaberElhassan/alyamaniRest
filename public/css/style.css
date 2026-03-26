@@ -1794,6 +1794,20 @@ body.others-page .navbar a {
   gap: 0.5rem;
 }
 
+.menu-card .size-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.menu-card .size-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
 .cart-page {
   display: flex;
   flex-direction: column;
