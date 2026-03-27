@@ -1621,12 +1621,13 @@ body.others-page .navbar a {
 }
 
 .menu-category-links {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   justify-content: center;
-  gap: 0.6rem;
-  margin: 0 0 1.6rem;
-  overflow-x: auto;
+  gap: 0.6rem 0.8rem;
+  margin: 0 auto 1.6rem;
+  width: min(100%, 720px);
+  overflow-x: visible;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
 }
@@ -1635,16 +1636,15 @@ body.others-page .navbar a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.3rem 0.7rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 999px;
   border: 0;
   background: transparent;
   color: #fff;
   text-decoration: none;
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.89rem;
+  font-weight: 500;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 

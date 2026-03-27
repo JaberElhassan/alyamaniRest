@@ -1400,11 +1400,18 @@ const addToCart = (menuItemId, size) => {
     normalizedSize = 'medium';
   }
 
-  let unitPrice = Number(menuItem.price_small);
+  const baseSinglePrice =
+    menuItem.price != null ? Number(menuItem.price) : Number(menuItem.price_small);
+
+  let unitPrice = baseSinglePrice;
   if (normalizedSize === 'large') {
     unitPrice = Number(menuItem.price_large);
   } else if (normalizedSize === 'medium') {
     unitPrice = Number(menuItem.price_medium);
+  }
+
+  if (!Number.isFinite(unitPrice)) {
+    unitPrice = baseSinglePrice;
   }
 
   const existing = cartItems.find(
