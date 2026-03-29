@@ -27,9 +27,9 @@
   </div>
 
   <div class="home-gallery">
-    <img src="/images/home3.jpg" alt="Restaurant interior" loading="lazy">
-    <img src="/images/home2.jpg" alt="Chef preparing food" loading="lazy">
-    <img src="/images/home29.jpg" alt="Guests dining at restaurant" loading="lazy">
+    <img src="/images/homeImage1.jpg" alt="Restaurant interior" loading="lazy">
+    <img src="/images/homeImage2.jpg" alt="Chef preparing food" loading="lazy">
+    <img src="/images/homeImage3.jpg" alt="Guests dining at restaurant" loading="lazy">
   </div>
 </section>
 
@@ -40,58 +40,55 @@
 
   <div class="slider-track-wrap" id="foodSliderTrack">
     <article class="slide-card">
-      <img src="/images/home69.jpg" alt="" loading="lazy">
+      <img src="/images/sliderImage1.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/home81.jpg" alt="" loading="lazy">
+      <img src="/images/sliderImage2.jpg" alt="" loading="lazy">
     </article>
      <article class="slide-card">
       <img src="/images/snack_chickenFajita.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/home62.jpg" alt="" loading="lazy">
+      <img src="/images/sliderImage3.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/home63.jpg" alt="" loading="lazy">
+      <img src="/images/sliderImage4.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/home54.jpg" alt="" loading="lazy">
+      <img src="/images/sliderImage5.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/mozzarella_rolls_fried.jpg" alt="" loading="lazy">
+      <img src="/images/appetizers_mozzarellaSticks.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/shrimps_dynamite.jpg" alt="" loading="lazy">
+      <img src="/images/appetizers_shrimpsDynamite.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/side_shawarma_beef_falet.jpg" alt="" loading="lazy">
+      <img src="/images/shawarma_beefShawarmaInWeight.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/home71.jpg" alt="" loading="lazy">
+      <img src="/images/sliderImage6.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/home15.jpg" alt="" loading="lazy">
+      <img src="/images/sliderImage7.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/home89.jpg" alt="" loading="lazy">
+      <img src="/images/sliderImage8.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/home76.jpg" alt="" loading="lazy">
+      <img src="/images/chicken_grilledChickenOnGazCombo.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/side_chicken_2.jpg" alt="" loading="lazy">
+      <img src="/images/snack_chickenPesto.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/home74.jpg" alt="" loading="lazy">
+      <img src="/images/platters_tawook.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/side_chicken_tawouk.jpg" alt="" loading="lazy">
+      <img src="/images/sliderImage9.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
-      <img src="/images/home14.jpg" alt="" loading="lazy">
-    </article>
-    <article class="slide-card">
-      <img src="/images/home9.jpg" alt="" loading="lazy">
+      <img src="/images/sliderImage10.jpg" alt="" loading="lazy">
     </article>
     <article class="slide-card">
       <img src="/images/appetizers_curlyFries.jpg" alt="" loading="lazy">
@@ -102,6 +99,9 @@
 
   <div class="slider-controls slider-controls-bottom">
     <button type="button" class="slider-btn" id="sliderPrev" aria-label="Previous items">&lt;</button>
+    <button type="button" class="slider-btn" id="sliderToggle" aria-label="Pause slider" aria-pressed="false">
+      <span class="slider-toggle-icon" aria-hidden="true">||</span>
+    </button>
     <button type="button" class="slider-btn" id="sliderNext" aria-label="Next items">&gt;</button>
   </div>
 
@@ -122,13 +122,15 @@
     const track = document.getElementById('foodSliderTrack');
     const prev = document.getElementById('sliderPrev');
     const next = document.getElementById('sliderNext');
-    if (!track || !prev || !next) return;
+    const toggle = document.getElementById('sliderToggle');
+    if (!track || !prev || !next || !toggle) return;
     if (!track.querySelector('.slide-card')) return;
 
     let loopWidth = track.scrollWidth;
     let animationId = null;
     let lastFrameTime = null;
     let resumeTimeoutId = null;
+    let isPaused = false;
     const speedPxPerSecond = 120;
     const supportsHoverPause = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
@@ -148,6 +150,7 @@
     };
 
     const startAutoScroll = () => {
+      if (isPaused) return;
       if (animationId) return;
       if (resumeTimeoutId) {
         clearTimeout(resumeTimeoutId);
@@ -189,6 +192,7 @@
     };
 
     const scheduleResume = (delayMs = 600) => {
+      if (isPaused) return;
       if (resumeTimeoutId) {
         clearTimeout(resumeTimeoutId);
       }
@@ -249,6 +253,20 @@
 
     prev.addEventListener('click', () => moveOneCard(-1));
     next.addEventListener('click', () => moveOneCard(1));
+    toggle.addEventListener('click', () => {
+      isPaused = !isPaused;
+      if (isPaused) {
+        stopAutoScroll();
+        toggle.setAttribute('aria-label', 'Start slider');
+        toggle.setAttribute('aria-pressed', 'true');
+        toggle.querySelector('.slider-toggle-icon').textContent = '>';
+      } else {
+        toggle.setAttribute('aria-label', 'Pause slider');
+        toggle.setAttribute('aria-pressed', 'false');
+        toggle.querySelector('.slider-toggle-icon').textContent = '||';
+        startAutoScroll();
+      }
+    });
 
     refreshMetrics();
     startAutoScroll();

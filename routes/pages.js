@@ -4,8 +4,8 @@ const { getMenuItems, getAdminOrders, clearAdminOrders } = require('../data/stor
 
 const router = express.Router();
 const CONTACT_EMAIL_TO = process.env.CONTACT_EMAIL_TO || 'sam_1072@yahoo.com';
-const ADMIN_USERNAME = 'alyamani';
-const ADMIN_PASSWORD = 'alyamani';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'alyamani';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'alyamani';
 const ADMIN_COOKIE = 'adminAuth';
 const ADMIN_POLL_INTERVAL_MS = 5000;
 
@@ -224,44 +224,6 @@ router.get('/services', (req, res) => {
 
 router.get('/gallery', (req, res) => {
   res.render('gallery', { title: 'Gallery', bodyClass: 'gallery-page' });
-});
-
-router.get('/others', async (req, res, next) => {
-  try {
-    const menuItems = getMenuItems();
-    const primaryMatch = menuItems
-      .filter((item) => {
-        const name = item.name.toLowerCase();
-        const category = item.category_name.toLowerCase();
-        return name.includes('chicken') && (name.includes('shawarma') || category === 'sides');
-      })
-      .sort((a, b) => {
-        const aSide = a.name.toLowerCase().includes('side') ? 0 : 1;
-        const bSide = b.name.toLowerCase().includes('side') ? 0 : 1;
-        if (aSide !== bSide) {
-          return aSide - bSide;
-        }
-        return a.id - b.id;
-      })
-      .slice(0, 1);
-
-    let featuredItem = primaryMatch[0] || null;
-
-    if (!featuredItem) {
-      featuredItem = menuItems
-        .slice()
-        .sort((a, b) => a.id - b.id)
-        .find(() => true) || null;
-    }
-
-    res.render('others', {
-      title: 'Others',
-      bodyClass: 'others-page',
-      featuredItem
-    });
-  } catch (error) {
-    next(error);
-  }
 });
 
 module.exports = router;

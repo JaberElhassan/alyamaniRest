@@ -32,7 +32,6 @@
       <a href="/about">About</a>
       <a href="/services">Services</a>
       <a href="/gallery">Gallery</a>
-      <a href="/others">Others</a>
       <a href="/login">Login</a>
       <a href="/cart" class="cart-nav-link" aria-label="Cart" title="Cart">
         <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -123,43 +122,51 @@
           });
         });
 
-        document.querySelectorAll('.menu-category-links a').forEach((link) => {
-          link.addEventListener('click', (event) => {
-            const targetId = link.getAttribute('href');
-            if (!targetId || !targetId.startsWith('#')) return;
-            const targetSection = document.querySelector(targetId);
-            if (!targetSection) return;
-            event.preventDefault();
-
-            if (targetSection.classList.contains('is-collapsed')) {
-              targetSection.classList.remove('is-collapsed');
-              const targetToggle = targetSection.querySelector('.menu-section-toggle');
-              if (targetToggle) {
-                targetToggle.setAttribute('aria-expanded', 'true');
-              }
-            }
-
-            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-            const extraTargets = link.dataset.open;
-            if (extraTargets) {
-              extraTargets.split(',').forEach((slug) => {
-                const extraSection = document.getElementById(slug.trim());
-                if (!extraSection || !extraSection.classList.contains('is-collapsed')) return;
-                extraSection.classList.remove('is-collapsed');
-                const extraToggle = extraSection.querySelector('.menu-section-toggle');
-                if (extraToggle) {
-                  extraToggle.setAttribute('aria-expanded', 'true');
-                }
-              });
+        const categoryLinks = Array.from(document.querySelectorAll('.menu-category-links a'));
+        const sections = Array.from(menuSections);
+        const setActiveSection = (targetSection) => {
+          sections.forEach((section) => {
+            const isActive = section === targetSection;
+            section.classList.toggle('is-hidden', !isActive);
+            if (isActive && section.classList.contains('is-collapsed')) {
+              section.classList.remove('is-collapsed');
+              const toggle = section.querySelector('.menu-section-toggle');
+              if (toggle) toggle.setAttribute('aria-expanded', 'true');
             }
           });
-        });
+
+          categoryLinks.forEach((link) => {
+            const targetId = link.getAttribute('href');
+            link.classList.toggle('is-active', targetId === `#${targetSection.id}`);
+          });
+        };
+
+        if (categoryLinks.length) {
+          const defaultSection =
+            sections.find((section) =>
+              String(section.dataset.category || '').toLowerCase().includes('appetizer')
+            ) || sections[0];
+
+          if (defaultSection) {
+            setActiveSection(defaultSection);
+          }
+
+          categoryLinks.forEach((link) => {
+            link.addEventListener('click', (event) => {
+              const targetId = link.getAttribute('href');
+              if (!targetId || !targetId.startsWith('#')) return;
+              const targetSection = document.querySelector(targetId);
+              if (!targetSection) return;
+              event.preventDefault();
+              setActiveSection(targetSection);
+            });
+          });
+        }
       }
 
       if (topBtn) {
         const toggleTopBtn = () => {
-          const shouldShow = window.scrollY > 240;
+          const shouldShow = window.scrollY > 0;
           topBtn.classList.toggle('is-visible', shouldShow);
         };
 

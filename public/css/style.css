@@ -166,6 +166,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 0.2rem;
+  position: relative;
 }
 
 .cart-icon {
@@ -190,6 +191,7 @@ h1 {
   background: transparent;
   color: #fff;
   font-weight: 700;
+  position: relative;
 }
 
 .cart-mobile-icon:hover {
@@ -207,14 +209,18 @@ h1 {
   font-size: 0.74rem;
   font-weight: 700;
   line-height: 1;
-  background: #fff;
-  color: #b43b10;
+  background: var(--accent);
+  color: #fff;
+  position: absolute;
+  top: -0.2rem;
+  right: -0.2rem;
+  pointer-events: none;
 }
 
 .top-btn {
   position: fixed;
   right: 1rem;
-  bottom: 1rem;
+  bottom: 6rem;
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -1271,46 +1277,6 @@ body.gallery-page .navbar a {
 }
 
 
-/* Others page */
-body.others-page {
-  color: #eff1f7;
-}
-body.others-page .navbar {
-  border-color: #2d3444;
-}
-
-body.others-page .navbar a {
-  color: #e8e6f4;
-}
-
-.others-showcase {
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 16px;
-  padding: 1.25rem;
-  box-shadow: none;
-}
-
-.others-kicker {
-  margin: 0;
-  font-size: 0.76rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #ffc997;
-  font-weight: 700;
-}
-
-.others-showcase h1 {
-  margin: 0.35rem 0 0.45rem;
-  color: #fff1df;
-  font-family: inherit;
-}
-
-.others-intro {
-  margin: 0 0 1rem;
-  color: #d6d8e7;
-}
-
 .feature-dish-card {
   display: grid;
   grid-template-columns: minmax(260px, 1fr) minmax(0, 1.2fr);
@@ -1654,11 +1620,19 @@ body.others-page .navbar a {
   transform: translateY(-1px);
 }
 
+.menu-category-links a.is-active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.menu-section.is-hidden {
+  display: none;
+}
+
 .contact-banner .menu-title,
 .about-page-wrap .menu-title,
 .services-page-wrap .menu-title,
 .gallery-showcase .menu-title,
-.others-showcase .menu-title,
 .cart-page .menu-title {
   margin: 0.2rem 0 1.2rem;
   color: transparent;
@@ -2280,10 +2254,10 @@ body.others-page .navbar a {
     overflow-x: hidden;
   }
 
-  .container {
+  /* .container {
     width: 94%;
     margin: 1.15rem auto;
-  }
+  } */
 
   .hero,
   .info-card,
@@ -2518,7 +2492,6 @@ body.others-page .navbar a {
     width: 46px;
     height: 46px;
     right: 0.75rem;
-    bottom: 0.75rem;
     font-size: 0.82rem;
   }
 }
@@ -2574,6 +2547,7 @@ body.others-page .navbar a {
   border-radius: 14px;
   border: 1px solid #2b2f3a;
   background: rgba(12, 14, 22, 0.86);
+  height: 100vh;
 }
 
 .auth-wrap h1,

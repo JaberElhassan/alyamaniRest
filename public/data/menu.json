@@ -1,0 +1,1031 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Appetizers"
+    },
+    {
+      "id": 2,
+      "name": "Shawarma"
+    },
+    {
+      "id": 3,
+      "name": "Salads"
+    },
+    {
+      "id": 4,
+      "name": "Drinks"
+    },
+    {
+      "id": 5,
+      "name": "Sauces"
+    },
+    {
+      "id": 6,
+      "name": "Burgers"
+    },
+    {
+      "id": 7,
+      "name": "Pizza & Pasta"
+    },
+    {
+      "id": 8,
+      "name": "Snack"
+    },
+    {
+      "id": 9,
+      "name": "Platters"
+    },
+    {
+      "id": 10,
+      "name": "Chicken"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "category_id": 1,
+      "name": "French Fries",
+      "ingredients": "Served with Cocktail Sauce",
+      "is_single_price": true,
+      "price": 4,
+      "image_url": "/images/appetizers_frenchFries.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 2,
+      "category_id": 1,
+      "name": "Wedges Fries",
+      "ingredients": "Served with BBQ Sauce",
+      "is_single_price": true,
+      "price": 4,
+      "image_url": "/images/appetizers_wedgesFries.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 3,
+      "category_id": 1,
+      "name": "Curly Fries",
+      "ingredients": "Served with Cocktail Sauce",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/appetizers_curlyFries.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 4,
+      "category_id": 1,
+      "name": "Mixed Fries",
+      "ingredients": "French Fries, Curly Fries, Wedges Fries Served with Cocktail & BBQ sauce",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/appetizers_mixedFries.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 5,
+      "category_id": 1,
+      "name": "Onion Rings",
+      "ingredients": "10 pcs served with Ranch sauce",
+      "is_single_price": true,
+      "price": 5,
+      "image_url": "/images/appetizers_onionRings.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 6,
+      "category_id": 1,
+      "name": "Rice Mandi",
+      "ingredients": "long-grain basmati rice,spiced broth containing cardamom,cloves,cinnamon,and black pepper",
+      "price_small": 3,
+      "price_medium": 5,
+      "price_large": 7,
+      "image_url": "/images/appetizers_riceMandi.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 7,
+      "category_id": 1,
+      "name": "Hummus",
+      "ingredients": "a smooth blend of chickpeas,tahini,lemon juice,garlic,olive oil, and salt",
+      "is_single_price": true,
+      "price": 4,
+      "image_url": "/images/appetizers_hummus.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 8,
+      "category_id": 1,
+      "name": "Mozzarella Sticks",
+      "ingredients": "5 Pcs Served with Cocktail Sauce",
+      "is_single_price": true,
+      "price": 5,
+      "image_url": "/images/appetizers_mozzarellaSticks.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 9,
+      "category_id": 1,
+      "name": "Cheddar sticks",
+      "ingredients": "5 Pcs Served with Cocktail Sauce",
+      "is_single_price": true,
+      "price": 5,
+      "image_url": "/images/appetizers_cheddarSticks.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 10,
+      "category_id": 1,
+      "name": "Jalapeno Bites",
+      "ingredients": "5 Pcs served with Ranch Sauce",
+      "is_single_price": true,
+      "price": 5,
+      "image_url": "/images/appetizers_jalapenoBites.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 11,
+      "category_id": 1,
+      "name": "Nuggets",
+      "ingredients": "10 Pcs served with BBQ",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/appetizers_nuggets.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 12,
+      "category_id": 1,
+      "name": "Yamani’s Combo",
+      "ingredients": "Mixed Fries,3 mozzarella Sticks,3 Cheddar sticks,3 Shrimp Dynamite,3 Jalapeno Bites,3 Onion Rings,served with Cocktail,Ranch,Dynamite & BBQ Sauce",
+      "is_single_price": true,
+      "price": 18,
+      "image_url": "/images/appetizers_yamanisCombo.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 13,
+      "category_id": 1,
+      "name": "Yamani’s Mini Combo",
+      "ingredients": "Mixed Fries,3 mozzarella Sticks,2 Cheddar sticks,2 Shrimp Dynamite,2 Jalapeno Bites,2 Onion Rings,served with Cocktail,Ranch,Dynamite & BBQ Sauce",
+      "is_single_price": true,
+      "price": 12,
+      "image_url": "/images/appetizers_yamanisMiniCombo.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 14,
+      "category_id": 1,
+      "name": "Shrimps Dynamite",
+      "ingredients": "8 Jumbo Pcs served with Dynamite Sauce",
+      "is_single_price": true,
+      "price": 8,
+      "image_url": "/images/appetizers_shrimpsDynamite.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 15,
+      "category_id": 1,
+      "name": "Wings BBQ",
+      "ingredients": "8 wings Pcs dipped in BBQ Sauce",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/appetizers_wingsBBQ.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 16,
+      "category_id": 1,
+      "name": "Wings Dynamite",
+      "ingredients": "8 Wings Pcs Dipped in Dynamite Sauce",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/appetizers_wingsDynamite.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 17,
+      "category_id": 1,
+      "name": "Wings Honey Mustard",
+      "ingredients": "8 wings pcs dipped In Honey Mustard Sauce",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/appetizers_wingsHoneyMustard.jpg",
+      "category_name": "Appetizers"
+    },
+    {
+      "id": 201,
+      "category_id": 2,
+      "name": "Large Chicken Shawarma Arabic Bread",
+      "ingredients": "Fries, Garlic , Pickles",
+      "is_single_price": true,
+      "price": 5.5,
+      "image_url": "/images/shawarma_largeChickenShawarmaArabicBread.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 202,
+      "category_id": 2,
+      "name": "Large Chicken Shawarma Markouk Bread",
+      "ingredients": "Fries , Garlic , Pickles",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/shawarma_largeChickenShawarmaMarkoukBread.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 203,
+      "category_id": 2,
+      "name": "Duner Chicken Shawarma",
+      "ingredients": "Cocktail Sauce , Ranch Sauce , Tomato , Onion, Red Cabbage, Lettuce",
+      "is_single_price": true,
+      "price": 6.5,
+      "image_url": "/images/shawarma_dunerChickenShawarma.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 204,
+      "category_id": 2,
+      "name": "Large Beef Shawarma Arabic Bread",
+      "ingredients": "Tarator , Boaz Salad , Tomato",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/shawarma_largeBeefShawarmaArabicBread.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 205,
+      "category_id": 2,
+      "name": "Large Beef Shawarma Markouk Bread",
+      "ingredients": "Tarator , Boaz Salad , Tomato",
+      "is_single_price": true,
+      "price": 6.5,
+      "image_url": "/images/shawarma_largeBeefShawarmaMarkoukBread.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 206,
+      "category_id": 2,
+      "name": "Duner Beef Shawarma",
+      "ingredients": "Tomato, Onion, lettuce, Tarator ,Red Cabbage",
+      "is_single_price": true,
+      "price": 7,
+      "image_url": "/images/shawarma_dunerBeefShawarma.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 207,
+      "category_id": 2,
+      "name": "Sliced ​​Chicken Shawarma Markouk Meal",
+      "ingredients": "2 kinds of garlic regular and spicy , Fries , coleslaw, pickles",
+      "is_single_price": true,
+      "price": 11,
+      "image_url": "/images/shawarma_sliced​​ChickenShawarmaMarkoukMeal.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 208,
+      "category_id": 2,
+      "name": "Sliced ​​Beef Shawarma Markouk Meal",
+      "ingredients": "Tarator , Boaz Salad, Fries , Tomato, Pickles",
+      "is_single_price": true,
+      "price": 12,
+      "image_url": "/images/shawarma_sliced​​BeefShawarmaMarkoukMeal.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 209,
+      "category_id": 2,
+      "name": "Lo2met Shawarma mix",
+      "ingredients": "2 Buns Chicken Shawarma , 2 Buns Beef Shawarma , Garlic Sauce & Fries .",
+      "is_single_price": true,
+      "price": 11,
+      "image_url": "/images/shawarma_lo2metShawarmaMix.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 210,
+      "category_id": 2,
+      "name": "Chicken Shawarma in Weight",
+      "ingredients": "2 kinds of garlic regular and Spicy , Fries , Pickles , Coleslaw",
+      "price_small": 16,
+      "price_large": 30,
+      "size_small_label": "1/2 Kg",
+      "size_large_label": "1 Kg",
+      "image_url": "/images/shawarma_chickenShawarmaInWeight.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 211,
+      "category_id": 2,
+      "name": "Beef Shawarma in Weight",
+      "ingredients": "Tarator , Boaz Salad , Fries , Tomato",
+      "price_small": 16,
+      "price_large": 30,
+      "size_small_label": "1/2 Kg",
+      "size_large_label": "1 Kg",
+      "image_url": "/images/shawarma_beefShawarmaInWeight.jpg",
+      "category_name": "Shawarma"
+    },
+    {
+      "id": 301,
+      "category_id": 3,
+      "name": "Fatoush",
+      "ingredients": "mixed greens, cucumbers, tomatoes, radishes, and herbs tossed with crispy fried or toasted pita",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/salads_fatoush.jpg",
+      "category_name": "Salads"
+    },
+    {
+      "id": 302,
+      "category_id": 3,
+      "name": "Greek Salad",
+      "ingredients": "Cesar Dressing , Cherry Tomatoes, Crunchy Crotons & Parmesan Cheese ",
+      "is_single_price": true,
+      "price": 7,
+      "image_url": "/images/salads_greekCaesar.jpg",
+      "category_name": "Salads"
+    },
+    {
+      "id": 303,
+      "category_id": 3,
+      "name": "Chicken Pasta Salad",
+      "ingredients": "Cesar Dressing , Lettuce , Olives , Cherry Tomatoes, Green Pepper , Corn , Crunchy Crotons &Oregano",
+      "is_single_price": true,
+      "price": 8,
+      "image_url": "/images/salads_chickenPasta.jpg",
+      "category_name": "Salads"
+    },
+    {
+      "id": 304,
+      "category_id": 3,
+      "name": "Shrimps Salad",
+      "ingredients": "Crab Dressing , Lettuce , Carrots , Cherry Tomatoes & Crunchy Crotons",
+      "is_single_price": true,
+      "price": 8,
+      "image_url": "/images/salads_shrimps.jpg",
+      "category_name": "Salads"
+    },
+    {
+      "id": 305,
+      "category_id": 3,
+      "name": "Crab Salad",
+      "ingredients": "Crab Dressing , Lettuce , Corn , Cherry Tomatoes, Carrot & Crunchy Crotons",
+      "is_single_price": true,
+      "price": 8,
+      "image_url": "/images/salads_crab.jpg",
+      "category_name": "Salads"
+    },
+    {
+      "id": 306,
+      "category_id": 3,
+      "name": "Shrimps & Crab Salad",
+      "ingredients": "Crab Dressing , Lettuce , Carrots , Cherry Tomatoes & Crunchy Crotons",
+      "is_single_price": true,
+      "price": 10,
+      "image_url": "/images/salads_shrimpsCrab.jpg",
+      "category_name": "Salads"
+    },
+    {
+      "id": 701,
+      "category_id": 7,
+      "name": "Chicken Fettuccine",
+      "ingredients": "Italian pasta, Alfredo Sauce, Chicken, Fresh Mushroom, Mozarella Cheese, Parsley",
+      "is_single_price": true,
+      "price": 10,
+      "image_url": "/images/pizza_chickenFettuccine.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 702,
+      "category_id": 7,
+      "name": "Shrimps Fettuccine",
+      "ingredients": "Italian pasta, Alfredo Sauce, Shrimps, Fresh Mushroom, Mozarella Cheese, Parsley",
+      "is_single_price": true,
+      "price": 11,
+      "image_url": "/images/pizza_shrimpsFettuccine.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 703,
+      "category_id": 7,
+      "name": "Margarita",
+      "ingredients": "Tomato Sauce , Mozzarella Cheese , Oregano",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_margarita.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 704,
+      "category_id": 7,
+      "name": "Vegetarian",
+      "ingredients": "Tomato Sauce , Mozzarella Cheese , Green Pepper , Onion , Fresh Mushrooms , Tomato, Olives , Corn , Oregano",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_vegetarian.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 705,
+      "category_id": 7,
+      "name": "Pepperoni",
+      "ingredients": "Tomato Sauce , Mozzarella Cheese , Pepproni, Oregano",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_pepperoni.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 706,
+      "category_id": 7,
+      "name": "Pepperoni Supreme",
+      "ingredients": "Tomato Sauce , Mozzarella Cheese , Pepperoni , Green Pepper , Onion , Tomato , Olives , Fresh Mushrooms , Oregano",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_pepperoniSupreme.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 707,
+      "category_id": 7,
+      "name": "Chicken Bbq",
+      "ingredients": "BBQ Sauce , Mozzarella Cheese , Chicken Tenders , Onion , Fresh Mushrooms",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_chickenBbq.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 708,
+      "category_id": 7,
+      "name": "Chicken Polo",
+      "ingredients": "Alfredo Sauce , Mozzarella Cheese, Chicken Tenders , Corn , Onion , Fresh Mushrooms , Cocktail Sauce",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_chickenPolo.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 709,
+      "category_id": 7,
+      "name": "Chicken Mexican",
+      "ingredients": "Mexican Sauce , Mozzarella Cheese, Chicken Tenders, Green Pepper , Onion, Fresh Mushrooms , Tomato , Jalapenos",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_chickenMexican.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 710,
+      "category_id": 7,
+      "name": "Chicken Pesto",
+      "ingredients": "Pesto Sauce , Mozzarella Cheese, Chicken Tenders, Tomatoes, Fresh Mushrooms",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_chickenPesto.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 711,
+      "category_id": 7,
+      "name": "Chicken Turkey",
+      "ingredients": "Ranch Sauce , Mozzarella Cheese , Chicken Tenders , Smoked Turkey , Corn , Lettuce",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_chickenTurkey.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 712,
+      "category_id": 7,
+      "name": "Chicken Dynamite",
+      "ingredients": "Dynamite Sauce , Mozzarella Cheese , Chicken Tenders , Tomato, Green Pepper , Onion , Fresh Mushrooms",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_chickenDynamite.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 7013,
+      "category_id": 7,
+      "name": "Shrimps Dynamite",
+      "ingredients": "Dynamite Sauce , Mozzarella Cheese , Shrimps , Tomato, Green Pepper , Onion , Fresh Mushrooms",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_shrimpsDynamite.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 714,
+      "category_id": 7,
+      "name": "Chicken Sweet & Sour",
+      "ingredients": "Sweet & Sour Sauce , Mozzarella Cheese , Chicken Tenders , Tomato, Green Pepper , Onion , Fresh Mushrooms",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_chickenSweetSour.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 715,
+      "category_id": 7,
+      "name": "Shrimps Sweet & Sour",
+      "ingredients": "Sweet & Sour Sauce , Mozzarella Cheese , Shrimps , Tomato, Green Pepper , Onion , Fresh Mushrooms",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_shrimpsSweetSour.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 716,
+      "category_id": 7,
+      "name": "Chicken Teriyaki",
+      "ingredients": "Teriyaki Sauce , Mozzarella Cheese , Chicken Tenders , Onion , Corn, Fresh Mushrooms",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_chickenTeriyaki.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 717,
+      "category_id": 7,
+      "name": "Shrimps Teriyaki",
+      "ingredients": "Teriyaki Sauce , Mozzarella Cheese , Shrimps , Onion , Corn , Fresh Mushrooms",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_shrimpsTeriyaki.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 718,
+      "category_id": 7,
+      "name": "Chicken Ranch",
+      "ingredients": "Ranch Sauce , Mozzarella Cheese , Chicken Tenders , Tomato, Green Pepper , Onion , Fresh Mushrooms",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_chickenRanch.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 719,
+      "category_id": 7,
+      "name": "Chicken Honey Mustard",
+      "ingredients": "Honey Mustard Sauce , Mozzarella Cheese , Chicken Tenders , Tomato, Corn , Onion , Fresh Mushrooms",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_chickenHoneyMustard.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 720,
+      "category_id": 7,
+      "name": "Philly steak",
+      "ingredients": "Mushroom Sauce , Mozzarella Cheese , Beef Steak , Onion , Green Pepper , Fresh Mushrooms , Ranch Sauce",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_phillySteak.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 721,
+      "category_id": 7,
+      "name": "Yamani Pizza",
+      "ingredients": "4 Kinds of your Choice in One Xlarge Pizza",
+      "price_small": 4.49,
+      "price_large": 6.49,
+      "image_url": "/images/pizza_yamaniPizza.jpg",
+      "category_name": "Pizza & Pasta"
+    },
+    {
+      "id": 601,
+      "category_id": 6,
+      "name": "Beef Lebanese Burger",
+      "ingredients": "Beef Burger , Coleslaw, Fries , Pickles , Ketchup",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/burgers_beefLebaneseBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 602,
+      "category_id": 6,
+      "name": "Beef Cheese Burger",
+      "ingredients": "Beef Burger , Lettuce , Pickles , Onion , Tomato , Cheddar Cheese , AlYamani Special Sauce",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/burgers_beefCheeseBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 603,
+      "category_id": 6,
+      "name": "Beef Mushroom Burger",
+      "ingredients": "Beef Burger , Mushroom Sauce , Emmental Cheese , Onion , Fresh Mushroom",
+      "is_single_price": true,
+      "price": 7,
+      "image_url": "/images/burgers_beefMushroomBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 604,
+      "category_id": 6,
+      "name": "Beef Mexican Burger",
+      "ingredients": "Beef Burger , Lettuce , Jalapeños, Tomato, Mozzarella Patty , Cheddar Cheese , Mexican Sauce",
+      "is_single_price": true,
+      "price": 7.5,
+      "image_url": "/images/burgers_beefMexicanBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 605,
+      "category_id": 6,
+      "name": "Truffle burger",
+      "ingredients": "Truffle Sauce , Mushroom , Onion , Emmental Cheese , Rocca",
+      "is_single_price": true,
+      "price": 7.5,
+      "image_url": "/images/burgers_truffleBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 606,
+      "category_id": 6,
+      "name": "Yamani’s Beef Burger",
+      "ingredients": "Beef Burger , Lettuce , Pickles , Chips , Mozzarella Patty , Cheddar Cheese , Yamani’s Special Sauce",
+      "is_single_price": true,
+      "price": 7.5,
+      "image_url": "/images/burgers_yamanisBeefBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 607,
+      "category_id": 6,
+      "name": "Chicken Cheese Burger",
+      "ingredients": "Grilled Chicken , Lettuce , Tomato , Onion , Cheddar Cheese , Yamani’s special sauce",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/burgers_chickenCheeseBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 608,
+      "category_id": 6,
+      "name": "Chicken Mushroom Burger",
+      "ingredients": "Grilled Chicken , Mushroom Sauce , Emmental Cheese , Onion , Fresh Mushrooms",
+      "is_single_price": true,
+      "price": 7,
+      "image_url": "/images/burgers_chickenMushroomBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 609,
+      "category_id": 6,
+      "name": "Chicken Honey Mustard Burger",
+      "ingredients": "Fried Chicken , Lettuce , Tomato , Pickles , Corn , Chips",
+      "is_single_price": true,
+      "price": 7,
+      "image_url": "/images/burgers_chickenHoneyMustardBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 610,
+      "category_id": 6,
+      "name": "Zinger Burger",
+      "ingredients": "Fried Chicken , Smoked Turkey , Lettuce , Tomato , Jalapenos, Mexican Sauce , Cheddar Cheese",
+      "is_single_price": true,
+      "price": 7,
+      "image_url": "/images/burgers_zingerBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 611,
+      "category_id": 6,
+      "name": "Yamani’s Chicken Burger",
+      "ingredients": "Fried Chicken , Lettuce , Pickles , Chips , Mozarella Patty , Cheddar Cheese , Yamani’s Special Sauce",
+      "is_single_price": true,
+      "price": 7.5,
+      "image_url": "/images/burgers_yamanisChickenBurger.jpg",
+      "category_name": "Burgers"
+    },
+    {
+      "id": 801,
+      "category_id": 8,
+      "name": "Chicken Fajita",
+      "ingredients": "Chicken Tenders, Mozzarella cheese , Green Pepper , Onion, Mushroom , avocado Sauce",
+      "is_single_price": true,
+      "price": 7,
+      "image_url": "/images/snack_chickenFajita.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 802,
+      "category_id": 8,
+      "name": "Philadelphia Steak",
+      "ingredients": "Steak Tenders, Mozzarella cheese , Green Pepper , Onion, Mushroom , Mayo Sauce",
+      "is_single_price": true,
+      "price": 8,
+      "image_url": "/images/snack_philadelphiaSteak.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 803,
+      "category_id": 8,
+      "name": "Chicken Sap",
+      "ingredients": "Chicken Tenders, Mozzarella cheese , Lettuce , Corn , Pickles, Mayo",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/snack_chickenSap.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 804,
+      "category_id": 8,
+      "name": "Mexicana",
+      "ingredients": "Chicken Tenders, Mozzarella Cheese , Green Pepper , Onion , jalapeno , Corn , Mexican Sauce",
+      "is_single_price": true,
+      "price": 6.5,
+      "image_url": "/images/snack_mexicana.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 805,
+      "category_id": 8,
+      "name": "Chicken Pesto",
+      "ingredients": "Chicken Tenders , Mozzarella Cheese , Pesto Sauce , Tomato , Lettuce , Fresh Mushroom",
+      "is_single_price": true,
+      "price": 6.5,
+      "image_url": "/images/snack_chickenPesto.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 806,
+      "category_id": 8,
+      "name": "Crispy",
+      "ingredients": "Fried Chicken , Fries , Garlic , Pickles , Coleslaw, Cocktail Sauce",
+      "is_single_price": true,
+      "price": 6,
+      "image_url": "/images/snack_crispy.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 807,
+      "category_id": 8,
+      "name": "Chicken & Turkey Twister",
+      "ingredients": "Chicken Breast , Turkey , mozarella Cheese , Corn , Lettuce , Pickles & Mayo Sauce",
+      "is_single_price": true,
+      "price": 7,
+      "image_url": "/images/snack_chickenTurkeyTwister.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 808,
+      "category_id": 8,
+      "name": "Zinger Twister",
+      "ingredients": "Fried Chicken , Smoked Turkey , Lettuce , Tomato , Corn , Jalapeños , Chips , mexican Sauce , Cheddar",
+      "is_single_price": true,
+      "price": 7,
+      "image_url": "/images/snack_zingerTwister.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 809,
+      "category_id": 8,
+      "name": "Shrimps",
+      "ingredients": "Fried Shrimps , Lettuce, Corn , Pickles , Tartar Sauce",
+      "is_single_price": true,
+      "price": 7,
+      "image_url": "/images/snack_shrimps.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 810,
+      "category_id": 8,
+      "name": "Shrimps & Crab",
+      "ingredients": "Fried Shrimps , Crab , Lettuce , Corn , Pickles , Tartar Sauce",
+      "is_single_price": true,
+      "price": 8.5,
+      "image_url": "/images/snack_shrimpsCrab.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 811,
+      "category_id": 8,
+      "name": "Grilled Tawouk on Charcoal",
+      "ingredients": "Fries, Garlic , Coleslaw, Pickles",
+      "is_single_price": true,
+      "price": 5.5,
+      "image_url": "/images/snack_grilledTawoukOnCharcoal.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 812,
+      "category_id": 8,
+      "name": "Grilled Chicken on Charcoal",
+      "ingredients": "Fries , Garlic , Pickles",
+      "is_single_price": true,
+      "price": 5.5,
+      "image_url": "/images/snack_grilledChickenOnCharcoal.jpg",
+      "category_name": "Snack"
+    },
+    {
+      "id": 901,
+      "category_id": 9,
+      "name": "Crispy",
+      "ingredients": "5 pcs, Fries , Garlic , Cocktail Sauce , Pickles , Coleslaw",
+      "is_single_price": true,
+      "price": 11,
+      "image_url": "/images/platters_crispy.jpg",
+      "category_name": "Platters"
+    },
+    {
+      "id": 902,
+      "category_id": 9,
+      "name": "Crispy Family Meal (1KG)",
+      "ingredients": "Fries , Garlic , Cocktail Sauce, Pickles , Coleslaw",
+      "is_single_price": true,
+      "price": 30,
+      "image_url": "/images/platters_crispyFamilyMeal.jpg",
+      "category_name": "Platters"
+    },
+    {
+      "id": 903,
+      "category_id": 9,
+      "name": "Tawook",
+      "ingredients": "2 shish Tawook , Fries , Coleslaw, Garlic , Spicy Garlic , Pickles",
+      "is_single_price": true,
+      "price": 11,
+      "image_url": "/images/platters_tawook.jpg",
+      "category_name": "Platters"
+    },
+    {
+      "id": 904,
+      "category_id": 9,
+      "name": "Nuggets Kids Meal",
+      "ingredients": "10 Pcs , Fries , Dip , Maccaw Juice",
+      "is_single_price": true,
+      "price": 7.5,
+      "image_url": "/images/platters_nuggetsKidsMeal.jpg",
+      "category_name": "Platters"
+    },
+    {
+      "id": 1001,
+      "category_id": 10,
+      "name": "Broasted Chicken 4 Pcs",
+      "ingredients": "Fries, Garlic , Spicy Garlic , Coleslaw, pickles",
+      "is_single_price": true,
+      "price": 11,
+      "image_url": "/images/chicken_broastedChicken4Pcs.jpg",
+      "category_name": "Chicken"
+    },
+    {
+      "id": 1002,
+      "category_id": 10,
+      "name": "Grilled Chicken On Gaz",
+      "ingredients": "Garlic , Spicy Garlic , Pickles",
+      "is_single_price": true,
+      "price": 7.5,
+      "image_url": "/images/chicken_grilledChickenOnGaz.jpg",
+      "category_name": "Chicken"
+    },
+    {
+      "id": 1003,
+      "category_id": 10,
+      "name": "Grilled Chicken On Gaz Combo",
+      "ingredients": "Fries, Garlic , Spicy Garlic , Pickles,Coleslaw",
+      "is_single_price": true,
+      "price": 7.5,
+      "image_url": "/images/chicken_grilledChickenOnGazCombo.jpg",
+      "category_name": "Chicken"
+    },
+    {
+      "id": 1004,
+      "category_id": 10,
+      "name": "Grilled Chicken on Charcoal",
+      "ingredients": "Fries, Pickles , Garlic , Spicy Garlic , Coleslaw",
+      "is_single_price": true,
+      "price": 7.5,
+      "image_url": "/images/chicken_grilledChickenOnCharcoal.jpg",
+      "category_name": "Chicken"
+    },
+    {
+      "id": 1005,
+      "category_id": 10,
+      "name": "Grilled Chicken No Bones on Charcoal",
+      "ingredients": "Fries , Pickles, Garlic, Spicy Garlic, Coleslaw",
+      "is_single_price": true,
+      "price": 7.5,
+      "image_url": "/images/chicken_grilledChickenNoBonesOnCharcoal.jpg",
+      "category_name": "Chicken"
+    },
+    {
+      "id": 401,
+      "category_id": 4,
+      "name": "Fresh Orange",
+      "ingredients": "Fresh orange extract, ice",
+      "is_single_price": true,
+      "price": 2,
+      "image_url": "/images/drinks_freshOrange.jpg",
+      "category_name": "Drinks"
+    },
+    {
+      "id": 402,
+      "category_id": 4,
+      "name": "Maccaw Juice",
+      "ingredients": "Pineapple, Apple , Mango , Exotic",
+      "is_single_price": true,
+      "price": 1,
+      "image_url": "/images/drinks_maccawJuice.jpg",
+      "category_name": "Drinks"
+    },
+    {
+      "id": 403,
+      "category_id": 4,
+      "name": "Soft Drinks",
+      "ingredients": "Pepsi / Miranda / 7up",
+      "is_single_price": true,
+      "price": 1.5,
+      "image_url": "/images/drinks_softDrinks.jpg",
+      "category_name": "Drinks"
+    },
+    {
+      "id": 404,
+      "category_id": 4,
+      "name": "Lipton Iced Tea",
+      "ingredients": "Tea extract, lemon, ice",
+      "is_single_price": true,
+      "price": 2,
+      "image_url": "/images/drinks_liptonIcedTea.jpg",
+      "category_name": "Drinks"
+    },
+    {
+      "id": 405,
+      "category_id": 4,
+      "name": "Fresh Laban",
+      "ingredients": "Cold laban, mint",
+      "is_single_price": true,
+      "price": 1.5,
+      "image_url": "/images/drinks_laban.jpg",
+      "category_name": "Drinks"
+    },
+    {
+      "id": 406,
+      "category_id": 4,
+      "name": "Mineral Water",
+      "ingredients": "Chilled bottled water",
+      "is_single_price": true,
+      "price": 0.5,
+      "image_url": "/images/drinks_water.jpg",
+      "category_name": "Drinks"
+    },
+    {
+      "id": 501,
+      "category_id": 5,
+      "name": "Mayo Sauces",
+      "ingredients": "Egg, Mustard, Vinegar, Salt, Lemon juice",
+      "is_single_price": true,
+      "price": 1,
+      "image_url": "/images/sauces_mayoSauces.jpg",
+      "category_name": "Sauces"
+    },
+    {
+      "id": 502,
+      "category_id": 5,
+      "name": "Garlic / Spicy Garlic",
+      "ingredients": "Fresh garlic cloves, Salt, Oil, Mayo, Lemon juice",
+      "price_small": 1.5,
+      "price_large": 2.5,
+      "image_url": "/images/sauces_garlicSpicyGarlic.jpg",
+      "category_name": "Sauces"
+    },
+    {
+      "id": 503,
+      "category_id": 5,
+      "name": "Coleslaw",
+      "ingredients": "Shredded Cabbage, grated carrots, mayonnaise, sugar, vinegar ",
+      "price_small": 2,
+      "price_large": 3,
+      "image_url": "/images/sauces_coleslaw.jpg",
+      "category_name": "Sauces"
+    },
+    {
+      "id": 504,
+      "category_id": 5,
+      "name": "Avocado Sauce",
+      "ingredients": "Avocado, creamy sauce, herbs",
+      "price_small": 2,
+      "price_large": 3,
+      "image_url": "/images/sauces_avocadoSauce.jpg",
+      "category_name": "Sauces"
+    },
+    {
+      "id": 505,
+      "category_id": 5,
+      "name": "Cheddar Cheese",
+      "ingredients": "Cheddar cheese, creamy sauce, herbs",
+      "price_small": 2,
+      "price_large": 3,
+      "image_url": "/images/sauces_cheddarCheese.jpg",
+      "category_name": "Sauces"
+    }
+  ]
+}
