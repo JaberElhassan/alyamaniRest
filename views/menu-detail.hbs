@@ -10,20 +10,77 @@
         <p><strong>Price:</strong> {{formatCurrency item.price}}</p>
         <input type="hidden" name="size" value="small" />
       {{else}}
-        <label>
-          <input type="radio" name="size" value="small" checked />
-          {{#if item.size_small_label}}{{item.size_small_label}}{{else}}S{{/if}} ({{formatCurrency item.price_small}})
-        </label>
-        {{#if item.price_medium}}
+        {{#if item.price_small}}
           <label>
-            <input type="radio" name="size" value="medium" />
-            {{#if item.size_medium_label}}{{item.size_medium_label}}{{else}}M{{/if}} ({{formatCurrency item.price_medium}})
+            <input type="radio" name="size" value="small" checked />
+            {{#if item.size_small_label}}{{item.size_small_label}}{{else}}S{{/if}} ({{formatCurrency item.price_small}})
           </label>
+        {{else}}
+          {{#if item.price_medium}}
+            <label>
+              <input type="radio" name="size" value="medium" checked />
+              {{#if item.size_medium_label}}{{item.size_medium_label}}{{else}}M{{/if}} ({{formatCurrency item.price_medium}})
+            </label>
+          {{else}}
+            {{#if item.price_large}}
+              <label>
+                <input type="radio" name="size" value="large" checked />
+                {{#if item.size_large_label}}{{item.size_large_label}}{{else}}L{{/if}} ({{formatCurrency item.price_large}})
+              </label>
+            {{else}}
+              {{#if item.price_xlarge}}
+                <label>
+                  <input type="radio" name="size" value="xlarge" checked />
+                  {{#if item.size_xlarge_label}}{{item.size_xlarge_label}}{{else}}XL{{/if}} ({{formatCurrency item.price_xlarge}})
+                </label>
+              {{/if}}
+            {{/if}}
+          {{/if}}
         {{/if}}
-        <label>
-          <input type="radio" name="size" value="large" />
-          {{#if item.size_large_label}}{{item.size_large_label}}{{else}}L{{/if}} ({{formatCurrency item.price_large}})
-        </label>
+        {{#if item.price_small}}
+          {{#if item.price_medium}}
+            <label>
+              <input type="radio" name="size" value="medium" />
+              {{#if item.size_medium_label}}{{item.size_medium_label}}{{else}}M{{/if}} ({{formatCurrency item.price_medium}})
+            </label>
+          {{/if}}
+          {{#if item.price_large}}
+            <label>
+              <input type="radio" name="size" value="large" />
+              {{#if item.size_large_label}}{{item.size_large_label}}{{else}}L{{/if}} ({{formatCurrency item.price_large}})
+            </label>
+          {{/if}}
+          {{#if item.price_xlarge}}
+            <label>
+              <input type="radio" name="size" value="xlarge" />
+              {{#if item.size_xlarge_label}}{{item.size_xlarge_label}}{{else}}XL{{/if}} ({{formatCurrency item.price_xlarge}})
+            </label>
+          {{/if}}
+        {{else}}
+          {{#if item.price_medium}}
+            {{#if item.price_large}}
+              <label>
+                <input type="radio" name="size" value="large" />
+                {{#if item.size_large_label}}{{item.size_large_label}}{{else}}L{{/if}} ({{formatCurrency item.price_large}})
+              </label>
+            {{/if}}
+            {{#if item.price_xlarge}}
+              <label>
+                <input type="radio" name="size" value="xlarge" />
+                {{#if item.size_xlarge_label}}{{item.size_xlarge_label}}{{else}}XL{{/if}} ({{formatCurrency item.price_xlarge}})
+              </label>
+            {{/if}}
+          {{else}}
+            {{#if item.price_large}}
+              {{#if item.price_xlarge}}
+                <label>
+                  <input type="radio" name="size" value="xlarge" />
+                  {{#if item.size_xlarge_label}}{{item.size_xlarge_label}}{{else}}XL{{/if}} ({{formatCurrency item.price_xlarge}})
+                </label>
+              {{/if}}
+            {{/if}}
+          {{/if}}
+        {{/if}}
       {{/if}}
       <button class="btn" type="submit">Add to Cart</button>
     </form>

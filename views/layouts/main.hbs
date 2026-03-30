@@ -23,7 +23,7 @@
         <circle cx="10" cy="19" r="1.6"></circle>
         <circle cx="17" cy="19" r="1.6"></circle>
       </svg>
-      <span class="cart-count-badge">{{cartItemCount}}</span>
+      <span class="cart-count-badge" data-count="{{cartItemCount}}">{{cartItemCount}}</span>
     </a>
     <nav class="navbar" id="primary-navbar">
       <a href="/">Home</a>
@@ -39,7 +39,7 @@
           <circle cx="10" cy="19" r="1.6"></circle>
           <circle cx="17" cy="19" r="1.6"></circle>
         </svg>
-        <span class="cart-count-badge">{{cartItemCount}}</span>
+        <span class="cart-count-badge" data-count="{{cartItemCount}}">{{cartItemCount}}</span>
       </a>
     </nav>
   </header>
@@ -147,9 +147,21 @@
               String(section.dataset.category || '').toLowerCase().includes('appetizer')
             ) || sections[0];
 
-          if (defaultSection) {
-            setActiveSection(defaultSection);
-          }
+          const activateFromHash = () => {
+            const hash = window.location.hash;
+            if (hash) {
+              const targetSection = document.querySelector(hash);
+              if (targetSection) {
+                setActiveSection(targetSection);
+                return;
+              }
+            }
+            if (defaultSection) {
+              setActiveSection(defaultSection);
+            }
+          };
+
+          activateFromHash();
 
           categoryLinks.forEach((link) => {
             link.addEventListener('click', (event) => {
@@ -159,8 +171,11 @@
               if (!targetSection) return;
               event.preventDefault();
               setActiveSection(targetSection);
+              history.replaceState(null, '', targetId);
             });
           });
+
+          window.addEventListener('hashchange', activateFromHash);
         }
       }
 

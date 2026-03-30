@@ -6,12 +6,6 @@
 </nav>
 {{#each categories}}
   <section class="menu-section" id="{{slug}}" data-category="{{name}}">
-    <h2>
-      <button class="menu-section-toggle" type="button" aria-expanded="true">
-        <span class="menu-section-title">{{name}}</span>
-        <span class="menu-section-arrow" aria-hidden="true"></span>
-      </button>
-    </h2>
     <div class="card-grid">
       {{#each items}}
         <article class="card menu-card">
@@ -24,27 +18,36 @@
             </div>
             <div class="menu-card-buttons">
               <a class="btn menu-view-details" href="/menu/item/{{id}}">View Details</a>
-              <form method="POST" action="/cart/add/{{id}}" class="inline-form size-form">
+              {{#if disableAddToCart}}
+                {{!-- Keep only View Details --}}
+              {{else}}
                 {{#if is_single_price}}
-                  <input type="hidden" name="size" value="small" />
-                {{else}}
-                  {{#if size_small_label}}
-                    <div class="size-options">
-                      <label>
-                        <input type="radio" name="size" value="small" checked />
-                        {{size_small_label}} ({{formatCurrency price_small}})
-                      </label>
-                      <label>
-                        <input type="radio" name="size" value="large" />
-                        {{size_large_label}} ({{formatCurrency price_large}})
-                      </label>
-                    </div>
-                  {{else}}
+                  <form method="POST" action="/cart/add/{{id}}" class="inline-form size-form">
                     <input type="hidden" name="size" value="small" />
+                    <button class="btn" type="submit">Add to Cart</button>
+                  </form>
+                {{else}}
+                  {{#if price_medium}}
+                    {{!-- Multiple sizes: keep only View Details --}}
+                  {{else}}
+                    {{#if price_large}}
+                      {{!-- Multiple sizes: keep only View Details --}}
+                    {{else}}
+                      {{#if price_xlarge}}
+                        <form method="POST" action="/cart/add/{{id}}" class="inline-form size-form">
+                          <input type="hidden" name="size" value="xlarge" />
+                          <button class="btn" type="submit">Add to Cart</button>
+                        </form>
+                      {{else}}
+                        <form method="POST" action="/cart/add/{{id}}" class="inline-form size-form">
+                          <input type="hidden" name="size" value="small" />
+                          <button class="btn" type="submit">Add to Cart</button>
+                        </form>
+                      {{/if}}
+                    {{/if}}
                   {{/if}}
                 {{/if}}
-                <button class="btn" type="submit">Add to Cart</button>
-              </form>
+              {{/if}}
             </div>
           </div>
         </article>

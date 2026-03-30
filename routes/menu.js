@@ -32,11 +32,24 @@ router.get('/menu', (req, res, next) => {
       }
 
       const name = category.name;
+      const isPizzaPasta =
+        String(name || '').toLowerCase().includes('pizza') &&
+        String(name || '').toLowerCase().includes('pasta');
+      const isSauces = String(name || '').toLowerCase() === 'sauces';
+
+      const pizzaPastaItems = items.filter((item) => item.category_name === category.name);
+      const categoryItems = pizzaPastaItems.map((item, index) => ({
+        ...item,
+        disableAddToCart:
+          (isPizzaPasta && (index < 2 || index === pizzaPastaItems.length - 1)) ||
+          (isSauces && index === 0)
+      }));
+
       return {
         id: category.id,
         name,
         slug: slugify(name),
-        items: items.filter((item) => item.category_name === category.name)
+        items: categoryItems
       };
     }).filter(Boolean);
     const priorityOrder = ['Sides', 'Sandwiches'];

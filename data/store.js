@@ -10,7 +10,7 @@ const categories = [
   { id: 4, name: 'Drinks' },
   { id: 5, name: 'Sauces' },
   { id: 6, name: 'Burgers'},
-  { id: 7, name: 'Pizza & Pasta'},
+  { id: 7, name: 'Pizza-Pasta'},
   { id: 8, name: 'Snack' },
   { id: 9, name: 'Platters' },
   { id: 10, name: 'Chicken' }
@@ -370,8 +370,10 @@ const menuItems = [
     category_id: 7,
     name: 'Margarita',
     ingredients: 'Tomato Sauce , Mozzarella Cheese , Oregano',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 5.00,
+    price_medium: 7.00,
+    price_large: 10.00,
+    price_xlarge: 14.00,
     image_url: '/images/pizza_margarita.jpg'
   },
   {
@@ -379,8 +381,10 @@ const menuItems = [
     category_id: 7,
     name: 'Vegetarian',
     ingredients: 'Tomato Sauce , Mozzarella Cheese , Green Pepper , Onion , Fresh Mushrooms , Tomato, Olives , Corn , Oregano',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 6.00,
+    price_medium: 8.00,
+    price_large: 11.00,
+    price_xlarge: 15.00,
     image_url: '/images/pizza_vegetarian.jpg'
   },
   {
@@ -388,8 +392,10 @@ const menuItems = [
     category_id: 7,
     name: 'Pepperoni',
     ingredients: 'Tomato Sauce , Mozzarella Cheese , Pepproni, Oregano',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 8.00,
+    price_medium: 10.00,
+    price_large: 13.00,
+    price_xlarge: 17.00,
     image_url: '/images/pizza_pepperoni.jpg'
   },
   {
@@ -397,8 +403,10 @@ const menuItems = [
     category_id: 7,
     name: 'Pepperoni Supreme',
     ingredients: 'Tomato Sauce , Mozzarella Cheese , Pepperoni , Green Pepper , Onion , Tomato , Olives , Fresh Mushrooms , Oregano',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 9.00,
+    price_medium: 11.00,
+    price_large: 14.00,
+    price_xlarge: 18.00,
     image_url: '/images/pizza_pepperoniSupreme.jpg'
   },
   {
@@ -406,8 +414,10 @@ const menuItems = [
     category_id: 7,
     name: 'Chicken Bbq',
     ingredients: 'BBQ Sauce , Mozzarella Cheese , Chicken Tenders , Onion , Fresh Mushrooms',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 9.00,
+    price_medium: 11.00,
+    price_large: 14.00,
+    price_xlarge: 18.00,
     image_url: '/images/pizza_chickenBbq.jpg'
   },
   {
@@ -415,8 +425,10 @@ const menuItems = [
     category_id: 7,
     name: 'Chicken Polo',
     ingredients: 'Alfredo Sauce , Mozzarella Cheese, Chicken Tenders , Corn , Onion , Fresh Mushrooms , Cocktail Sauce',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 9.00,
+    price_medium: 11.00,
+    price_large: 14.00,
+    price_xlarge: 18.00,
     image_url: '/images/pizza_chickenPolo.jpg'
   },
   {
@@ -424,8 +436,10 @@ const menuItems = [
     category_id: 7,
     name: 'Chicken Mexican',
     ingredients: 'Mexican Sauce , Mozzarella Cheese, Chicken Tenders, Green Pepper , Onion, Fresh Mushrooms , Tomato , Jalapenos',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 9.00,
+    price_medium: 11.00,
+    price_large: 14.00,
+    price_xlarge: 18.00,
     image_url: '/images/pizza_chickenMexican.jpg'
   },
   {
@@ -433,8 +447,10 @@ const menuItems = [
     category_id: 7,
     name: 'Chicken Pesto',
     ingredients: 'Pesto Sauce , Mozzarella Cheese, Chicken Tenders, Tomatoes, Fresh Mushrooms',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 9.00,
+    price_medium: 11.00,
+    price_large: 14.00,
+    price_xlarge: 18.00,
     image_url: '/images/pizza_chickenPesto.jpg'
   },
   {
@@ -442,8 +458,10 @@ const menuItems = [
     category_id: 7,
     name: 'Chicken Turkey',
     ingredients: 'Ranch Sauce , Mozzarella Cheese , Chicken Tenders , Smoked Turkey , Corn , Lettuce',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 10.00,
+    price_medium: 13.00,
+    price_large: 16.00,
+    price_xlarge: 20.00,
     image_url: '/images/pizza_chickenTurkey.jpg'
   },
   {
@@ -451,8 +469,10 @@ const menuItems = [
     category_id: 7,
     name: 'Chicken Dynamite',
     ingredients: 'Dynamite Sauce , Mozzarella Cheese , Chicken Tenders , Tomato, Green Pepper , Onion , Fresh Mushrooms',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 9.00,
+    price_medium: 11.00,
+    price_large: 14.00,
+    price_xlarge: 18.00,
     image_url: '/images/pizza_chickenDynamite.jpg'
   },
   {
@@ -460,8 +480,10 @@ const menuItems = [
     category_id: 7,
     name: 'Shrimps Dynamite',
     ingredients: 'Dynamite Sauce , Mozzarella Cheese , Shrimps , Tomato, Green Pepper , Onion , Fresh Mushrooms',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 10.00,
+    price_medium: 12.00,
+    price_large: 15.00,
+    price_xlarge: 19.00,
     image_url: '/images/pizza_shrimpsDynamite.jpg'
   },
   {
@@ -469,8 +491,10 @@ const menuItems = [
     category_id: 7,
     name: 'Chicken Sweet & Sour',
     ingredients: 'Sweet & Sour Sauce , Mozzarella Cheese , Chicken Tenders , Tomato, Green Pepper , Onion , Fresh Mushrooms',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 9.00,
+    price_medium: 11.00,
+    price_large: 14.00,
+    price_xlarge: 18.00,
     image_url: '/images/pizza_chickenSweetSour.jpg'
   },
   {
@@ -478,8 +502,10 @@ const menuItems = [
     category_id: 7,
     name: 'Shrimps Sweet & Sour',
     ingredients: 'Sweet & Sour Sauce , Mozzarella Cheese , Shrimps , Tomato, Green Pepper , Onion , Fresh Mushrooms',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 10.00,
+    price_medium: 12.00,
+    price_large: 15.00,
+    price_xlarge: 19.00,
     image_url: '/images/pizza_shrimpsSweetSour.jpg'
   },
   {
@@ -487,8 +513,10 @@ const menuItems = [
     category_id: 7,
     name: 'Chicken Teriyaki',
     ingredients: 'Teriyaki Sauce , Mozzarella Cheese , Chicken Tenders , Onion , Corn, Fresh Mushrooms',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 9.00,
+    price_medium: 11.00,
+    price_large: 14.00,
+    price_xlarge: 18.00,
     image_url: '/images/pizza_chickenTeriyaki.jpg'
   },
   {
@@ -496,8 +524,10 @@ const menuItems = [
     category_id: 7,
     name: 'Shrimps Teriyaki',
     ingredients: 'Teriyaki Sauce , Mozzarella Cheese , Shrimps , Onion , Corn , Fresh Mushrooms',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 10.00,
+    price_medium: 12.00,
+    price_large: 15.00,
+    price_xlarge: 19.00,
     image_url: '/images/pizza_shrimpsTeriyaki.jpg'
   },
   {
@@ -505,8 +535,10 @@ const menuItems = [
     category_id: 7,
     name: 'Chicken Ranch',
     ingredients: 'Ranch Sauce , Mozzarella Cheese , Chicken Tenders , Tomato, Green Pepper , Onion , Fresh Mushrooms',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 9.00,
+    price_medium: 11.00,
+    price_large: 14.00,
+    price_xlarge: 18.00,
     image_url: '/images/pizza_chickenRanch.jpg'
   },
   {
@@ -514,8 +546,10 @@ const menuItems = [
     category_id: 7,
     name: 'Chicken Honey Mustard',
     ingredients: 'Honey Mustard Sauce , Mozzarella Cheese , Chicken Tenders , Tomato, Corn , Onion , Fresh Mushrooms',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 9.00,
+    price_medium: 11.00,
+    price_large: 14.00,
+    price_xlarge: 18.00,
     image_url: '/images/pizza_chickenHoneyMustard.jpg'
   },
 {
@@ -523,8 +557,10 @@ const menuItems = [
     category_id: 7,
     name: 'Philly steak',
     ingredients: 'Mushroom Sauce , Mozzarella Cheese , Beef Steak , Onion , Green Pepper , Fresh Mushrooms , Ranch Sauce',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_small: 11.00,
+    price_medium: 14.00,
+    price_large: 17.00,
+    price_xlarge: 21.00,
     image_url: '/images/pizza_phillySteak.jpg'
   },
 {
@@ -532,8 +568,8 @@ const menuItems = [
     category_id: 7,
     name: 'Yamani Pizza',
     ingredients: '4 Kinds of your Choice in One Xlarge Pizza',
-    price_small: 4.49,
-    price_large: 6.49,
+    price_xlarge: 19.00,
+    size_xlarge_label: 'XL',
     image_url: '/images/pizza_yamaniPizza.jpg'
   },
 
@@ -821,8 +857,10 @@ const menuItems = [
   category_id: 10,
   name: 'Grilled Chicken On Gaz',
   ingredients: 'Garlic , Spicy Garlic , Pickles',
-  is_single_price: true,
-  price: 7.50,
+  price_small: 7.00,
+  price_large: 13.00,
+  size_small_label: 'Half Chicken',
+  size_large_label: 'Chicken',
   image_url: '/images/chicken_grilledChickenOnGaz.jpg'
   },
   {
@@ -830,8 +868,10 @@ const menuItems = [
   category_id: 10,
   name: 'Grilled Chicken On Gaz Combo',
   ingredients: 'Fries, Garlic , Spicy Garlic , Pickles,Coleslaw',
-  is_single_price: true,
-  price: 7.50,
+  price_small: 11.00,
+  price_large: 18.00,
+  size_small_label: 'Half Chicken Combo',
+  size_large_label: 'whole Chicken Combo',
   image_url: '/images/chicken_grilledChickenOnGazCombo.jpg'
   },
   {
@@ -1375,8 +1415,10 @@ const getCartItemsDetailed = () =>
         size_label:
           item.size === 'small'
             ? menuItem.size_small_label || item.size
-            : item.size === 'medium'
+          : item.size === 'medium'
               ? menuItem.size_medium_label || item.size
+              : item.size === 'xlarge'
+                ? menuItem.size_xlarge_label || item.size
               : item.size === 'large'
                 ? menuItem.size_large_label || item.size
                 : item.size
@@ -1393,21 +1435,55 @@ const addToCart = (menuItemId, size) => {
     return null;
   }
 
-  let normalizedSize = 'small';
-  if (size === 'large') {
-    normalizedSize = 'large';
-  } else if (size === 'medium' && menuItem.price_medium != null) {
-    normalizedSize = 'medium';
+  const hasSizeOptions =
+    menuItem.price_small != null ||
+    menuItem.price_medium != null ||
+    menuItem.price_large != null ||
+    menuItem.price_xlarge != null ||
+    menuItem.size_small_label ||
+    menuItem.size_medium_label ||
+    menuItem.size_large_label ||
+    menuItem.size_xlarge_label;
+
+  let normalizedSize = '';
+  if (hasSizeOptions) {
+    const availableSizes = [];
+    if (menuItem.price_small != null) availableSizes.push('small');
+    if (menuItem.price_medium != null) availableSizes.push('medium');
+    if (menuItem.price_large != null) availableSizes.push('large');
+    if (menuItem.price_xlarge != null) availableSizes.push('xlarge');
+
+    const preferredSize =
+      size === 'small' || size === 'medium' || size === 'large' || size === 'xlarge'
+        ? size
+        : '';
+
+    if (preferredSize && availableSizes.includes(preferredSize)) {
+      normalizedSize = preferredSize;
+    } else if (availableSizes.length) {
+      normalizedSize = availableSizes[0];
+    } else {
+      normalizedSize = 'small';
+    }
   }
 
   const baseSinglePrice =
-    menuItem.price != null ? Number(menuItem.price) : Number(menuItem.price_small);
+    menuItem.price != null
+      ? Number(menuItem.price)
+      : Number(
+          menuItem.price_small ??
+            menuItem.price_medium ??
+            menuItem.price_large ??
+            menuItem.price_xlarge
+        );
 
   let unitPrice = baseSinglePrice;
   if (normalizedSize === 'large') {
     unitPrice = Number(menuItem.price_large);
   } else if (normalizedSize === 'medium') {
     unitPrice = Number(menuItem.price_medium);
+  } else if (normalizedSize === 'xlarge') {
+    unitPrice = Number(menuItem.price_xlarge);
   }
 
   if (!Number.isFinite(unitPrice)) {
