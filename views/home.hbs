@@ -99,9 +99,6 @@
 
   <div class="slider-controls slider-controls-bottom">
     <button type="button" class="slider-btn" id="sliderPrev" aria-label="Previous items">&lt;</button>
-    <button type="button" class="slider-btn" id="sliderToggle" aria-label="Pause slider" aria-pressed="false">
-      <span class="slider-toggle-icon" aria-hidden="true">||</span>
-    </button>
     <button type="button" class="slider-btn" id="sliderNext" aria-label="Next items">&gt;</button>
   </div>
 
@@ -122,17 +119,10 @@
     const track = document.getElementById('foodSliderTrack');
     const prev = document.getElementById('sliderPrev');
     const next = document.getElementById('sliderNext');
-    const toggle = document.getElementById('sliderToggle');
-    if (!track || !prev || !next || !toggle) return;
+    if (!track || !prev || !next) return;
     if (!track.querySelector('.slide-card')) return;
 
     let loopWidth = track.scrollWidth;
-    let animationId = null;
-    let lastFrameTime = null;
-    let resumeTimeoutId = null;
-    let isPaused = false;
-    const speedPxPerSecond = 120;
-    const supportsHoverPause = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
     const getMaxScroll = () => Math.max(loopWidth - track.clientWidth, 0);
 
@@ -149,58 +139,6 @@
       }
     };
 
-    const startAutoScroll = () => {
-      if (isPaused) return;
-      if (animationId) return;
-      if (resumeTimeoutId) {
-        clearTimeout(resumeTimeoutId);
-        resumeTimeoutId = null;
-      }
-
-      const tick = (time) => {
-        if (lastFrameTime == null) {
-          lastFrameTime = time;
-        }
-
-        const deltaSeconds = Math.min((time - lastFrameTime) / 1000, 0.05);
-        lastFrameTime = time;
-        const maxScroll = getMaxScroll();
-        if (maxScroll <= 0) {
-          animationId = requestAnimationFrame(tick);
-          return;
-        }
-
-        let nextLeft = track.scrollLeft + speedPxPerSecond * deltaSeconds;
-        if (nextLeft >= maxScroll - 1) {
-          track.scrollLeft = 0;
-          animationId = requestAnimationFrame(tick);
-          return;
-        }
-
-        track.scrollLeft = nextLeft;
-        animationId = requestAnimationFrame(tick);
-      };
-
-      animationId = requestAnimationFrame(tick);
-    };
-
-    const stopAutoScroll = () => {
-      if (!animationId) return;
-      cancelAnimationFrame(animationId);
-      animationId = null;
-      lastFrameTime = null;
-    };
-
-    const scheduleResume = (delayMs = 600) => {
-      if (isPaused) return;
-      if (resumeTimeoutId) {
-        clearTimeout(resumeTimeoutId);
-      }
-      resumeTimeoutId = setTimeout(() => {
-        startAutoScroll();
-      }, delayMs);
-    };
-
     const getStepSize = () => {
       const firstCard = track.querySelector('.slide-card');
       if (!firstCard) return 260;
@@ -209,22 +147,23 @@
     };
 
     const moveOneCard = (direction) => {
-      stopAutoScroll();
       clampScroll();
       const step = getStepSize();
       const current = track.scrollLeft;
       const currentIndex = Math.round(current / step);
       let targetIndex = currentIndex + direction;
-      const maxIndex = Math.max(Math.floor(getMaxScroll() / step), 0);
+      const maxIndex = Math.max(Math.ceil(getMaxScroll() / step), 0);
 
-      if (targetIndex < 0) targetIndex = maxIndex;
-      if (targetIndex > maxIndex) targetIndex = 0;
+      if (targetIndex < 0) targetIndex = 0;
+      if (targetIndex > maxIndex) targetIndex = maxIndex;
 
       let target = targetIndex * step;
+      if (targetIndex >= maxIndex) {
+        target = getMaxScroll();
+      }
       if (target > getMaxScroll()) target = getMaxScroll();
 
       track.scrollTo({ left: target, behavior: 'smooth' });
-      scheduleResume(700);
     };
 
     window.addEventListener('resize', () => {
@@ -238,37 +177,9 @@
       }
     });
 
-    if (supportsHoverPause) {
-      track.addEventListener('mouseenter', stopAutoScroll);
-      track.addEventListener('mouseleave', startAutoScroll);
-    }
-
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        stopAutoScroll();
-      } else {
-        startAutoScroll();
-      }
-    });
-
     prev.addEventListener('click', () => moveOneCard(-1));
     next.addEventListener('click', () => moveOneCard(1));
-    toggle.addEventListener('click', () => {
-      isPaused = !isPaused;
-      if (isPaused) {
-        stopAutoScroll();
-        toggle.setAttribute('aria-label', 'Start slider');
-        toggle.setAttribute('aria-pressed', 'true');
-        toggle.querySelector('.slider-toggle-icon').textContent = '>';
-      } else {
-        toggle.setAttribute('aria-label', 'Pause slider');
-        toggle.setAttribute('aria-pressed', 'false');
-        toggle.querySelector('.slider-toggle-icon').textContent = '||';
-        startAutoScroll();
-      }
-    });
 
     refreshMetrics();
-    startAutoScroll();
   })();
 </script>
