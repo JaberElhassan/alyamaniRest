@@ -79,12 +79,32 @@ router.get('/admin', (req, res) => {
     return res.redirect('/login');
   }
   const { token } = getOrdersVersion();
+  const orders = getAdminOrders();
+  const toNumber = (value) => {
+    const cleaned = String(value ?? '').replace(/[^0-9.-]/g, '');
+    const parsed = Number.parseFloat(cleaned);
+    return Number.isFinite(parsed) ? parsed : 0;
+  };
+  const totals = orders.reduce(
+    (acc, order) => {
+      const pickup = toNumber(order.pickupTotal);
+      const delivery = toNumber(order.deliveryTotal);
+      acc.pickup += pickup;
+      acc.delivery += delivery;
+      acc.all += toNumber(order.total);
+      return acc;
+    },
+    { pickup: 0, delivery: 0, all: 0 }
+  );
 
   return res.render('admin', {
     title: 'Admin',
     bodyClass: 'admin-page',
     username: ADMIN_USERNAME,
-    orders: getAdminOrders(),
+    orders,
+    pickupTotalSum: totals.pickup,
+    deliveryTotalSum: totals.delivery,
+    overallTotalSum: totals.all,
     ordersVersion: token,
     adminPollIntervalMs: ADMIN_POLL_INTERVAL_MS
   });

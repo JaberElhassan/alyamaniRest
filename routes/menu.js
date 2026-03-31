@@ -36,13 +36,15 @@ router.get('/menu', (req, res, next) => {
         String(name || '').toLowerCase().includes('pizza') &&
         String(name || '').toLowerCase().includes('pasta');
       const isSauces = String(name || '').toLowerCase() === 'sauces';
+      const isChicken = String(name || '').toLowerCase() === 'chicken';
 
       const pizzaPastaItems = items.filter((item) => item.category_name === category.name);
       const categoryItems = pizzaPastaItems.map((item, index) => ({
         ...item,
         disableAddToCart:
           (isPizzaPasta && (index < 2 || index === pizzaPastaItems.length - 1)) ||
-          (isSauces && index === 0)
+          (isSauces && index === 0) ||
+          isChicken
       }));
 
       return {

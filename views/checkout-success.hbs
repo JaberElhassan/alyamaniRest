@@ -1,7 +1,26 @@
 <section class="checkout-success-wrap">
   <h1>Order Placed Successfully</h1>
   <p>Your order reference is <strong>{{orderRef}}</strong>.</p>
-  <p>Total paid: <strong>{{formatCurrency total}}</strong></p>
+  <p>Order type: <strong>{{orderType}}</strong></p>
+  <p>Customer name: <strong>{{customerName}}</strong></p>
+  {{#if isPickup}}
+    <p>Phone: <strong>{{customerPhone}}</strong></p>
+  {{else}}
+    <p>Address: <strong>{{customerAddress}}</strong></p>
+  {{/if}}
+
+  <h2>Items</h2>
+  <ul class="checkout-item-list">
+    {{#each items}}
+      <li class="checkout-item-row">
+        <span>{{name}} ({{size_label}}) x {{quantity}}</span>
+        <strong>{{calcSubtotal unit_price quantity}}</strong>
+      </li>
+    {{/each}}
+  </ul>
+  <p>Subtotal: <strong>{{formatCurrency subtotal}}</strong></p>
+  <p>Tax: <strong>{{formatCurrency tax}}</strong></p>
+  <p>Total: <strong>{{formatCurrency total}}</strong></p>
   <div class="checkout-success-actions">
     <a class="btn" href="/menu">Order More</a>
     <a class="btn checkout-secondary-btn" href="/">Back Home</a>

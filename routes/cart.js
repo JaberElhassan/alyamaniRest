@@ -12,7 +12,7 @@ const {
 const router = express.Router();
 
 const getCartSnapshot = () => {
-  const taxRate = Number(process.env.TAX_RATE ?? 0.07);
+  const taxRate = Number(process.env.TAX_RATE ?? 0.08);
   const items = getCartItemsDetailed();
 
   const subtotal = items.reduce((sum, item) => sum + Number(item.unit_price) * Number(item.quantity), 0);
@@ -61,26 +61,58 @@ router.get('/checkout', async (req, res, next) => {
 
 router.post('/checkout', async (req, res, next) => {
   try {
-    const { items, total } = getCartSnapshot();
+    const { items } = getCartSnapshot();
 
     if (!items.length) {
       return res.redirect('/cart');
     }
 
-    clearCart();
+    const subtotal = items.reduce(
+      (sum, item) => sum + Number(item.unit_price || 0) * Number(item.quantity || 0),
+      0
+    );
+    const taxRate = Number(process.env.TAX_RATE ?? 0.08);
+    const tax = subtotal * taxRate;
+    const total = subtotal + tax;
 
     const orderRef = `AY-${Date.now().toString().slice(-8)}`;
+    const orderDate = new Date();
+    const orderDateLabel = orderDate.toLocaleString();
+    const clientOrderTime = typeof req.body.order_time_client === 'string' ? req.body.order_time_client.trim() : '';
+    const isPickup = req.body.order_type === 'pickup';
+    const orderType = isPickup ? 'Pickup' : 'Delivery';
+    const customerName = typeof req.body.delivery_name === 'string' ? req.body.delivery_name.trim() : '';
+    const customerPhone = typeof req.body.delivery_phone === 'string' ? req.body.delivery_phone.trim() : '';
+    const customerAddress = typeof req.body.delivery_address === 'string' ? req.body.delivery_address.trim() : '';
+
+    clearCart();
     addAdminOrder({
       orderNumber: orderRef,
-      date: new Date().toLocaleString(),
-      total
+      date: orderDateLabel,
+      total,
+      orderType,
+      customerName,
+      pickupTotal: isPickup ? total : 0,
+      deliveryTotal: isPickup ? 0 : total
     });
 
     res.render('checkout-success', {
       title: 'Order Placed',
       bodyClass: 'checkout-page',
       orderRef,
-      total
+      total,
+      subtotal,
+      tax,
+      items,
+      orderDate: orderDateLabel,
+      clientOrderTime,
+      orderType,
+      isPickup,
+      customerName,
+      customerPhone,
+      customerAddress,
+      pickupTotal: isPickup ? total : 0,
+      deliveryTotal: isPickup ? 0 : total
     });
   } catch (error) {
     next(error);

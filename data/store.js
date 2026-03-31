@@ -1350,7 +1350,44 @@ const loadAdminOrders = () => {
 
     const raw = fs.readFileSync(ADMIN_ORDERS_FILE, 'utf8');
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+
+    let changed = false;
+    const normalized = parsed.map((order) => {
+      const next = { ...order };
+      if (next.orderType == null || String(next.orderType).trim() === '') {
+        const pickup = Number(next.pickupTotal || 0);
+        const delivery = Number(next.deliveryTotal || 0);
+        if (pickup > 0) {
+          next.orderType = 'Pickup';
+        } else if (delivery > 0) {
+          next.orderType = 'Delivery';
+        } else {
+          next.orderType = 'Unknown';
+        }
+        changed = true;
+      }
+      if (next.customerName == null) {
+        next.customerName = '';
+        changed = true;
+      }
+      if (next.pickupTotal == null) {
+        next.pickupTotal = 0;
+        changed = true;
+      }
+      if (next.deliveryTotal == null) {
+        next.deliveryTotal = 0;
+        changed = true;
+      }
+      return next;
+    });
+
+    if (changed) {
+      fs.writeFileSync(ADMIN_ORDERS_FILE, JSON.stringify(normalized, null, 2), 'utf8');
+    }
+    return normalized;
   } catch (error) {
     console.error('Failed to load admin orders from file:', error);
     return [];
@@ -1542,11 +1579,23 @@ const clearCart = () => {
   cartItems.length = 0;
 };
 
-const addAdminOrder = ({ orderNumber, date, total }) => {
+const addAdminOrder = ({
+  orderNumber,
+  date,
+  total,
+  orderType = '',
+  customerName = '',
+  pickupTotal = 0,
+  deliveryTotal = 0
+}) => {
   adminOrders.unshift({
     orderNumber: String(orderNumber),
     date: String(date),
-    total: Number(total || 0)
+    total: Number(total || 0),
+    orderType: String(orderType || ''),
+    customerName: String(customerName || ''),
+    pickupTotal: Number(pickupTotal || 0),
+    deliveryTotal: Number(deliveryTotal || 0)
   });
   persistAdminOrders();
 };

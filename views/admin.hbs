@@ -14,7 +14,9 @@
           <tr>
             <th>Order Number</th>
             <th>Date</th>
-            <th>Total Money</th>
+            <th>Customer</th>
+            <th>Order Type</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
@@ -22,6 +24,8 @@
             <tr>
               <td>{{this.orderNumber}}</td>
               <td>{{this.date}}</td>
+              <td>{{#if this.customerName}}{{this.customerName}}{{else}}--{{/if}}</td>
+              <td>{{#if this.orderType}}{{this.orderType}}{{else}}--{{/if}}</td>
               <td>{{formatCurrency this.total}}</td>
             </tr>
           {{/each}}
@@ -31,6 +35,12 @@
   {{else}}
     <p>No transactions yet.</p>
   {{/if}}
+
+  <div class="admin-totals">
+    <p>Pickup total: <strong>{{formatCurrency pickupTotalSum}}</strong></p>
+    <p>Delivery total: <strong>{{formatCurrency deliveryTotalSum}}</strong></p>
+    <p>All orders total: <strong>{{formatCurrency overallTotalSum}}</strong></p>
+  </div>
 
   <form
     class="admin-clear-form"

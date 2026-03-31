@@ -1993,6 +1993,65 @@ body.gallery-page .navbar a {
 
 .checkout-form {
   margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.order-type {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.order-type-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.order-type-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.pickup-fields {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.customer-info-title {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.pickup-fields input,
+.pickup-fields textarea,
+.pickup-fields select {
+  width: 100%;
+  border: 1px solid #d9c4ac;
+  border-radius: 8px;
+  padding: 0.62rem 0.7rem;
+  font: inherit;
+  background: #fffcf7;
+}
+
+.pickup-fields textarea {
+  resize: none;
+}
+
+.pickup-fields input:focus,
+.pickup-fields textarea:focus {
+  outline: none;
+  border-color: #de6b36;
+  box-shadow: 0 0 0 3px rgba(217, 72, 15, 0.16);
+}
+
+.is-hidden {
+  display: none !important;
 }
 
 .checkout-success-wrap {
@@ -2543,6 +2602,10 @@ body.login-page .auth-wrap {
   height: auto;
 }
 
+body.login-page {
+  background: rgba(12, 14, 22, 0.86);
+}
+
 .auth-wrap h1,
 .admin-wrap h1 {
   margin-top: 0;
@@ -2586,6 +2649,7 @@ body.login-page .auth-wrap {
 
 .admin-table-wrap {
   overflow-x: auto;
+  min-height: 16rem;
 }
 
 .admin-table {
@@ -2598,6 +2662,7 @@ body.login-page .auth-wrap {
   border-bottom: 1px solid #2f3646;
   text-align: left;
   padding: 0.7rem 0.65rem;
+  font-size: 0.9rem;
 }
 
 .admin-clear-form {
