@@ -127,6 +127,24 @@ router.post('/admin/clear-transactions', (req, res) => {
   return res.redirect('/admin');
 });
 
+router.get('/admin/order/:orderNumber', (req, res) => {
+  if (!isAdminLoggedIn(req)) {
+    return res.redirect('/login');
+  }
+
+  const orderNumber = String(req.params.orderNumber || '').trim();
+  const order = getAdminOrders().find((entry) => entry.orderNumber === orderNumber);
+  if (!order) {
+    return res.status(404).send('Order not found.');
+  }
+
+  return res.render('admin-order', {
+    title: `Order ${orderNumber}`,
+    bodyClass: 'admin-page',
+    order
+  });
+});
+
 const logoutHandler = (req, res) => {
   res.setHeader('Set-Cookie', `${ADMIN_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`);
   return res.redirect('/login');

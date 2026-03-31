@@ -22,7 +22,7 @@
         <tbody>
           {{#each orders}}
             <tr>
-              <td>{{this.orderNumber}}</td>
+              <td><a href="/admin/order/{{this.orderNumber}}">{{this.orderNumber}}</a></td>
               <td>{{this.date}}</td>
               <td>{{#if this.customerName}}{{this.customerName}}{{else}}--{{/if}}</td>
               <td>{{#if this.orderType}}{{this.orderType}}{{else}}--{{/if}}</td>

@@ -1373,6 +1373,10 @@ const loadAdminOrders = () => {
         next.customerName = '';
         changed = true;
       }
+      if (!Array.isArray(next.items)) {
+        next.items = [];
+        changed = true;
+      }
       if (next.pickupTotal == null) {
         next.pickupTotal = 0;
         changed = true;
@@ -1586,7 +1590,8 @@ const addAdminOrder = ({
   orderType = '',
   customerName = '',
   pickupTotal = 0,
-  deliveryTotal = 0
+  deliveryTotal = 0,
+  items = []
 }) => {
   adminOrders.unshift({
     orderNumber: String(orderNumber),
@@ -1595,7 +1600,8 @@ const addAdminOrder = ({
     orderType: String(orderType || ''),
     customerName: String(customerName || ''),
     pickupTotal: Number(pickupTotal || 0),
-    deliveryTotal: Number(deliveryTotal || 0)
+    deliveryTotal: Number(deliveryTotal || 0),
+    items: Array.isArray(items) ? items : []
   });
   persistAdminOrders();
 };

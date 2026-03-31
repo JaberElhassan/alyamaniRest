@@ -85,6 +85,14 @@ router.post('/checkout', async (req, res, next) => {
     const customerPhone = typeof req.body.delivery_phone === 'string' ? req.body.delivery_phone.trim() : '';
     const customerAddress = typeof req.body.delivery_address === 'string' ? req.body.delivery_address.trim() : '';
 
+    const orderItems = items.map((item) => ({
+      id: item.id,
+      name: item.name,
+      size_label: item.size_label,
+      quantity: Number(item.quantity || 0),
+      unit_price: Number(item.unit_price || 0)
+    }));
+
     clearCart();
     addAdminOrder({
       orderNumber: orderRef,
@@ -93,7 +101,8 @@ router.post('/checkout', async (req, res, next) => {
       orderType,
       customerName,
       pickupTotal: isPickup ? total : 0,
-      deliveryTotal: isPickup ? 0 : total
+      deliveryTotal: isPickup ? 0 : total,
+      items: orderItems
     });
 
     res.render('checkout-success', {
