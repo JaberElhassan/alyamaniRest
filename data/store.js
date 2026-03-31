@@ -1613,6 +1613,16 @@ const clearAdminOrders = () => {
   persistAdminOrders();
 };
 
+const deleteAdminOrderByNumber = (orderNumber) => {
+  const index = adminOrders.findIndex((entry) => entry.orderNumber === String(orderNumber));
+  if (index < 0) {
+    return false;
+  }
+  adminOrders.splice(index, 1);
+  persistAdminOrders();
+  return true;
+};
+
 module.exports = {
   categories,
   getMenuItems,
@@ -1626,5 +1636,6 @@ module.exports = {
   clearCart,
   addAdminOrder,
   getAdminOrders,
-  clearAdminOrders
+  clearAdminOrders,
+  deleteAdminOrderByNumber
 };

@@ -1,12 +1,15 @@
 const express = require('express');
 const { Resend } = require('resend');
-const { getMenuItems, getAdminOrders, clearAdminOrders } = require('../data/store');
+const { getMenuItems, getAdminOrders, clearAdminOrders, deleteAdminOrderByNumber } = require('../data/store');
 
 const router = express.Router();
 const CONTACT_EMAIL_TO = process.env.CONTACT_EMAIL_TO || 'sam_1072@yahoo.com';
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'alyamani';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'alyamani';
 const ADMIN_COOKIE = 'adminAuth';
+const USER_USERNAME = process.env.USER_USERNAME || 'user';
+const USER_PASSWORD = process.env.USER_PASSWORD || 'user';
+const USER_COOKIE = 'userAuth';
 const ADMIN_POLL_INTERVAL_MS = 5000;
 
 const getOrdersVersion = () => {
@@ -36,6 +39,7 @@ const parseCookies = (cookieHeader = '') =>
   );
 
 const isAdminLoggedIn = (req) => parseCookies(req.headers.cookie || '')[ADMIN_COOKIE] === '1';
+const isUserLoggedIn = (req) => parseCookies(req.headers.cookie || '')[USER_COOKIE] === '1';
 
 const resendApiKey = process.env.RESEND_API_KEY;
 const resendFrom = process.env.RESEND_FROM;
@@ -53,6 +57,9 @@ router.get('/login', (req, res) => {
   if (isAdminLoggedIn(req)) {
     return res.redirect('/admin');
   }
+  if (isUserLoggedIn(req)) {
+    return res.redirect('/orders');
+  }
 
   res.render('login', { title: 'Login', bodyClass: 'login-page' });
 });
@@ -61,7 +68,10 @@ router.post('/login', (req, res) => {
   const username = String(req.body.username || '').trim();
   const password = String(req.body.password || '').trim();
 
-  if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
+  const isAdminMatch = username === ADMIN_USERNAME && password === ADMIN_PASSWORD;
+  const isUserMatch = username === USER_USERNAME && password === USER_PASSWORD;
+
+  if (!isAdminMatch && !isUserMatch) {
     return res.status(401).render('login', {
       title: 'Login',
       bodyClass: 'login-page',
@@ -70,8 +80,19 @@ router.post('/login', (req, res) => {
     });
   }
 
-  res.setHeader('Set-Cookie', `${ADMIN_COOKIE}=1; Path=/; HttpOnly; SameSite=Lax`);
-  return res.redirect('/admin');
+  if (isAdminMatch) {
+    res.setHeader('Set-Cookie', [
+      `${ADMIN_COOKIE}=1; Path=/; HttpOnly; SameSite=Lax`,
+      `${USER_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`
+    ]);
+    return res.redirect('/admin');
+  }
+
+  res.setHeader('Set-Cookie', [
+    `${USER_COOKIE}=1; Path=/; HttpOnly; SameSite=Lax`,
+    `${ADMIN_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`
+  ]);
+  return res.redirect('/orders');
 });
 
 router.get('/admin', (req, res) => {
@@ -145,8 +166,48 @@ router.get('/admin/order/:orderNumber', (req, res) => {
   });
 });
 
+router.get('/orders', (req, res) => {
+  if (isAdminLoggedIn(req)) {
+    return res.redirect('/admin');
+  }
+  if (!isUserLoggedIn(req)) {
+    return res.redirect('/login');
+  }
+
+  const orders = getAdminOrders();
+
+  return res.render('user-orders', {
+    title: 'Your Orders',
+    bodyClass: 'admin-page',
+    username: USER_USERNAME,
+    orders,
+    hasOrders: orders.length > 0,
+    ordersCount: orders.length
+  });
+});
+
+router.post('/orders/delete/:orderNumber', (req, res) => {
+  if (!isUserLoggedIn(req) && !isAdminLoggedIn(req)) {
+    return res.redirect('/login');
+  }
+
+  const orderNumber = String(req.params.orderNumber || '').trim();
+  if (orderNumber && isAdminLoggedIn(req) && !isUserLoggedIn(req)) {
+    deleteAdminOrderByNumber(orderNumber);
+  }
+
+  if (req.headers.accept && req.headers.accept.includes('application/json')) {
+    return res.status(204).end();
+  }
+
+  return res.redirect(isAdminLoggedIn(req) ? '/admin' : '/orders');
+});
+
 const logoutHandler = (req, res) => {
-  res.setHeader('Set-Cookie', `${ADMIN_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`);
+  res.setHeader('Set-Cookie', [
+    `${ADMIN_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`,
+    `${USER_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`
+  ]);
   return res.redirect('/login');
 };
 

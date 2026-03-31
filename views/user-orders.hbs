@@ -1,0 +1,141 @@
+<section class="admin-wrap orders-wrap">
+  <h1>Orders</h1>
+  <p class="admin-welcome">Welcome, <strong>{{username}}</strong>.</p>
+
+  {{#if hasOrders}}
+    <p><strong id="ordersCount">{{ordersCount}}</strong> orders found.</p>
+
+    <div class="orders-grid">
+      {{#each orders}}
+        <article class="admin-order-card" data-order-number="{{orderNumber}}">
+          <h2>Order {{orderNumber}}</h2>
+          <p><strong>Date:</strong> {{date}}</p>
+          <p><strong>Order Type:</strong> {{#if orderType}}{{orderType}}{{else}}--{{/if}}</p>
+          <div class="order-actions">
+            <button class="btn order-done-btn" type="button" data-order="{{orderNumber}}">Done</button>
+            <form method="POST" action="/orders/delete/{{orderNumber}}" class="order-delete-form">
+              <button class="btn order-delete-btn" type="submit" disabled data-order="{{orderNumber}}">Delete</button>
+            </form>
+          </div>
+          <div class="order-items">
+            <h3>Items</h3>
+            {{#if items.length}}
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Size</th>
+                    <th>Quantity</th>
+                    <th>Line Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each items}}
+                    <tr>
+                      <td>{{name}}</td>
+                      <td>{{#if size_label}}{{size_label}}{{else}}Regular{{/if}}</td>
+                      <td>{{quantity}}</td>
+                      <td>{{calcSubtotal unit_price quantity}}</td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            {{else}}
+              <p>No items recorded for this order.</p>
+            {{/if}}
+
+            <div class="order-total">
+              <strong>Grand Total</strong>
+              <span>{{formatCurrency total}}</span>
+            </div>
+          </div>
+        </article>
+      {{/each}}
+    </div>
+  {{else}}
+    <p>No orders found yet.</p>
+  {{/if}}
+
+  <div class="checkout-success-actions">
+    <a class="btn checkout-secondary-btn" href="/">Back to Home</a>
+    <form method="POST" action="/logout" style="display:inline-block;">
+      <button class="btn" type="submit">Logout</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const STORAGE_KEY = 'hiddenOrderNumbers';
+    const loadHidden = () => {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) {
+        return [];
+      }
+    };
+    const saveHidden = (list) => {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      } catch (e) {
+        // ignore
+      }
+    };
+
+    const cards = document.querySelectorAll('.admin-order-card');
+    const hidden = new Set(loadHidden());
+
+    const countEl = document.getElementById('ordersCount');
+    const updateCount = () => {
+      if (!countEl) return;
+      const visibleCount = Array.from(cards).filter((card) => !card.classList.contains('is-hidden')).length;
+      countEl.textContent = String(visibleCount);
+    };
+
+    cards.forEach((card) => {
+      const orderNumber = card.getAttribute('data-order-number');
+      if (orderNumber && hidden.has(orderNumber)) {
+        card.classList.add('is-hidden');
+      }
+    });
+    updateCount();
+
+    cards.forEach((card) => {
+      const doneBtn = card.querySelector('.order-done-btn');
+      const deleteBtn = card.querySelector('.order-delete-btn');
+      const deleteForm = card.querySelector('.order-delete-form');
+      if (!doneBtn || !deleteBtn || !deleteForm) return;
+
+      doneBtn.addEventListener('click', () => {
+        deleteBtn.disabled = false;
+        doneBtn.disabled = true;
+      });
+
+      deleteForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (deleteBtn.disabled) return;
+
+        // Remove immediately for instant UI feedback.
+        const orderNumber = card.getAttribute('data-order-number');
+        card.classList.add('is-hidden');
+        if (orderNumber) {
+          hidden.add(orderNumber);
+          saveHidden(Array.from(hidden));
+        }
+        updateCount();
+
+        try {
+          await fetch(deleteForm.action, {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { Accept: 'application/json' }
+          });
+        } catch (error) {
+          console.error('Failed to delete order:', error);
+        }
+      });
+    });
+  })();
+</script>
